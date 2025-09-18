@@ -35,7 +35,6 @@
 
 **典型实现技术：**
 *   **神经网络 (Neural Networks):**
-*   **模糊逻辑控制 (Fuzzy Logic Control)** 
 *   **强化学习 (Reinforcement Learning, RL)**
 
 值得一提的是，很久以来的强化学习，都使用大参数量，深层次网络结构的模型,所以人们往往说的强化学习也就是深度强化学习
