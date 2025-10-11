@@ -34,8 +34,8 @@ Shahim B, Kapelios CJ, Savarese G, Lund LH. Global Public Health Burden of Heart
 
 更高的电机转速会增加溶血和血栓形成等不良事件的发生概率
 实验用水按1： 1： 1比例混合去离子水、 酒精和甘油
-望流速被预设为2.5 L/min， 因为这是高风险PCI手术中 pVAD流量的基本要求
-见1-s2.0-S0169260723005850-main.pdf(这篇文章还提到了经典的五回路电路网络引->https://ieeexplore.ieee.org/document/8067396)
+期望流速被预设为2.5 L/min， 因为这是高风险PCI手术中 pVAD流量的基本要求
+见heart_ctrl/complications/high_speed_is_bad.pdf(这篇文章还提到了经典的五回路电路网络引->https://ieeexplore.ieee.org/document/8067396)
 Chen C, Zhang M, Hao P, He F, Zhang X. An in silico analysis of unsteady flow structures in a microaxial blood pump under a pulsating rotation speed. Comput Methods Programs Biomed. 2024 Jan;243:107919. doi: 10.1016/j.cmpb.2023.107919. Epub 2023 Nov 7. PMID: 37972458.
 
 heart_ctrl/ml/LSTM-Transformer.pdf
@@ -44,9 +44,9 @@ heart_ctrl/ml/LSTM-Transformer.pdf
 的特征点作为脉动时间特征点。 虽然将模型输入从单点扩展到多点会不可避免地增加计算
 时间， 但随着计算硬件的进步， 这一问题将得到缓解。
 
-手术期低血压与脑损伤和肾功能损害密切相关
+手术期低血压与脑损伤和肾功能损害密切相关 (说明VAD适用于手术期?)
 Lizano-Díez I, Poteet S, Burniol-Garcia A, Cerezales M. The burden of perioperative hypertension/hypotension: A systematic review. PLoS One. 2022 Feb 9;17(2):e0263737. doi: 10.1371/journal.pone.0263737. PMID: 35139104; PMCID: PMC8827488.
-见journal.pone.0263737.pdf
+见heart_ctrl/complications/surgery_period.pdf
 
 heart_ctrl/ml/KNN-SVM-ANN.md:基于连续的波形数据，研究使用机器学习模型来“预测”即将在未来数秒或数个心动周期内可能发生的吸引或反流事件。这将为控制器提供宝贵的决策提前量，实现从“被动响应”到“主动预防”的转变。
 
@@ -60,12 +60,12 @@ heart_ctrl/ml/KNN-SVM-ANN.md:基于连续的波形数据，研究使用机器学
 临床手术中每位患者的心率各不相同， 这意味着每个心动周期的搏动特征时间点会因人而异
 引
 Ngan C, Zeng X, Lia T, Yin W, Kang Y. Cardiac index and heart rate as prognostic indicators for mortality in septic shock: A retrospective cohort study from the MIMIC-IV database. Heliyon. 2024 Apr 1;10(8):e28956. doi: 10.1016/j.heliyon.2024.e28956. PMID: 38655320; PMCID: PMC11035949.
-见main.pdf
+见heart_ctrl/feature_point/variety.pdf
 
 Chen Y, Wang M, Yang Y, Zeng M. Efficacy and Safety of Alprostadil in Microcirculatory Disturbances During Emergency PCI: A Meta-Analysis of Randomized Controlled Trials. Am J Cardiovasc Drugs. 2024 Jul;24(4):547-556. doi: 10.1007/s40256-024-00655-3. Epub 2024 Jun 8. PMID: 38850398.
 
 此外， 患者搏动特征时间点可能因术中突发状况发生显著变化 
-见INPLASY-Protocol-4638.pdf
+见heart_ctrl/feature_point/change.pdf
 Chen. Efficacy and safety of alprostadil in emergency PCI for improving microcirculatory disorders in patients with acute myocardial 
 infarction：a meta-analysis of randomized controlled trials. Inplasy protocol 202330105. doi: 10.37766/inplasy2023.3.0105
 
@@ -83,7 +83,6 @@ Wang F, Zhang Y, He W, Chen S, Jing T, Zhang Z. [Study on the synchronization of
 Rajagopalan, N, Borlaug, B, Bailey, A. et al. Practical Guidance for Hemodynamic Assessment by Right Heart Catheterization in Management of Heart Failure. J Am Coll Cardiol HF. 2024 Jul, 12 (7) 1141–1156.
 https://doi.org/10.1016/j.jchf.2024.03.020
 
-
 控制策略输入的两种思路:对生理状态进行估计,有创测量
 
 看看非pvad的方式 也就是较大型的vad
@@ -99,9 +98,16 @@ https://doi.org/10.1016/j.jchf.2024.03.020
 不确定性感知RL： 开发能够量化和管理不确定性的RL算法。控制器应能识别出何时其面临的生理状态超出了其训练数据的范围（即高认知不确定性），并在此情况下自动切换到更保守、更安全的控制模式。感知不确定的目的是为了安全
 
 该研究提出了一种新颖的、基于模型的安全RL算法ACTSAFE，用于实现安全且高效的探索。该算法学习一个感知不确定性的动态模型，并利用这个模型来隐式地定义和扩展“安全策略集”。其关键思想是在规划时对认知不确定性持“乐观”态度以鼓励探索，同时对安全约束持“悲观”态度以确保安全。
+ACTSAFE维持一组悲观的策略集，并在此集合内乐观地选择产生具有最大模型认知不确定性的轨迹的策略。
 As, Y., Sukhija, B., Treven, L., Sferrazza, C., Coros, S., & Krause, A. (2024). ActSafe: Active Exploration with Safety Constraints for Reinforcement Learning. arXiv. https://arxiv.org/abs/2410.09486
 见heart_ctrl/RL/ACTSAFE.pdf
 
 该研究专注于安全攸关领域的离线强化学习。它通过一个模型集成（model ensemble）来量化认知不确定性。其核心论点是，一个对认知不确定性风险规避的策略，能够自然地缓解离线学习中的分布偏移问题。通过惩罚那些预测结果具有高可变性的动作，智能体被激励去避免进入数据覆盖不足（即高认知不确定性）的状态区域。
 见heart_ctrl/RL/safe_offline.pdf
 Rigter, M., Lacerda, B., & Hawes, N. (2023). One Risk to Rule Them All: A Risk-Sensitive Perspective on Model-Based Offline Reinforcement Learning. In A. Oh, T. Naumann, A. Globerson, K. Saenko, M. Hardt, & S. Levine (Eds.), Advances in Neural Information Processing Systems(Vol. 36, pp. 77520–77545). Curran Associates, Inc.
+
+一个思路：先使用CNN来估计前负荷 然后将估计的前负荷作为输入进控制器中 得到泵速->也就是说我需要思考如何估计前负荷->使用离线强化学习
+
+阐述安全的强化学习策略为什么安全时 不仅仅是变化的很剧烈的时候进行惩罚 而是没有训练到的输入进行预测 预测到了的话就采取保守策略 因为可能从结果上来看变化并不剧烈的结果也是不对的 不仅仅是变化剧烈的结果不对->如何衡量某个输入是不在学习到的数据范围内的?
+
+对抗环境生成器的输入是网络的中间激活输出和控制器迭代一轮的所有环境状态
