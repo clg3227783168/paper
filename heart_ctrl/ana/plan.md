@@ -122,3 +122,7 @@ Actor-Critic: Actor用于给出动作,对于这个动作,根据奖励函数,会�
 
 约束策略优化 (CPO)： CPO是一种信赖域（trust region）算法，它在优化目标的同时，显式地将约束作为优化问题的一部分 57。CPO是“第一个为约束RL提供每次迭代（at each iteration）近约束满足保证（near-constraint satisfaction）的通用策略搜索算法”57。这意味着我们可以定义一个成本函数，并命令CPO在硬约束下最大化奖励。
 见heart_ctrl/RL/CPO.pdf
+
+对抗强化学习: heart_ctrl/RL/RARL.pdf heart_ctrl/RL/RARLBRC.pdf
+
+使用血液动力学门控Conformer (HGC-Transformer) 最终决定了
