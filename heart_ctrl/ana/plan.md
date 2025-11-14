@@ -126,3 +126,9 @@ Actor-Critic: Actor用于给出动作,对于这个动作,根据奖励函数,会�
 对抗强化学习: heart_ctrl/RL/RARL.pdf heart_ctrl/RL/RARLBRC.pdf
 
 使用血液动力学门控Conformer (HGC-Transformer) 最终决定了
+
+近期（两篇）研究表明，卷积和自注意力机制的结合优于单独使用二者
+第一篇
+I. Bello, B. Zoph, A. Vaswani, J. Shlens, and Q. V. Le, “Attention augmented convolutional networks,” in Proceedings of the IEEE International Conference on Computer Vision, 2019, pp. 3286–3295.
+第二篇
+Z. Wu, Z. Liu, J. Lin, Y. Lin, and S. Han, “Lite transformer with long-short range attention,” arXiv preprint arXiv:2004.11886, 2020.
