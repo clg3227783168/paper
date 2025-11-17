@@ -132,3 +132,5 @@ Actor-Critic: Actor用于给出动作,对于这个动作,根据奖励函数,会�
 I. Bello, B. Zoph, A. Vaswani, J. Shlens, and Q. V. Le, “Attention augmented convolutional networks,” in Proceedings of the IEEE International Conference on Computer Vision, 2019, pp. 3286–3295.
 第二篇
 Z. Wu, Z. Liu, J. Lin, Y. Lin, and S. Han, “Lite transformer with long-short range attention,” arXiv preprint arXiv:2004.11886, 2020.
+
+在实验的部分综合两个领域的习惯做实验
