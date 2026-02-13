@@ -134,3 +134,5 @@ I. Bello, B. Zoph, A. Vaswani, J. Shlens, and Q. V. Le, “Attention augmented c
 Z. Wu, Z. Liu, J. Lin, Y. Lin, and S. Han, “Lite transformer with long-short range attention,” arXiv preprint arXiv:2004.11886, 2020.
 
 在实验的部分综合两个领域的习惯做实验
+
+平均动脉压（MAP） = （收缩压 + 2 × 舒张压） / 3
