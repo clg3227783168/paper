@@ -1,2 +1,0 @@
-# paper
-paper readings
