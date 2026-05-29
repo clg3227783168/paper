@@ -1,0 +1,25 @@
+CLAUDE.md
+  2b9a3c5563105088 22
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "9fec7bc381b357acf1b48cdba7b908d149536819",
+  "prompts": {
+    "2b9a3c5563105088": {
+      "agent_id": {
+        "tool": "trae-cue",
+        "id": "ai_tab-icr-83c8fe38-0361-4f1c-9439-0427a7e6d34c",
+        "model": "default"
+      },
+      "human_author": "clz <3227783168@qq.com>",
+      "messages": [],
+      "total_additions": 1,
+      "total_deletions": 1,
+      "accepted_lines": 1,
+      "overriden_lines": 0
+    }
+  },
+  "attestation_metadata": {},
+  "remote_transcripts": {}
+}
