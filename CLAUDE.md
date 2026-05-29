@@ -17,10 +17,13 @@ paper/
 # 方式
 修改IEEECS目录下的文件
 
-# 过程记录
+# 图片
+- Fig. 1 ：CNN-Transformer Actor-Critic 总体框架图。 已有
+- Fig. 2 ：Mock circulatory loop 实验平台图。 已有
+- Fig. 3 ：Training and evaluation pipeline。
+- Fig. 4 ：Comparative control performance under physiological transitions。 已有
+- Fig. 5 ：Robustness and safety analysis under disturbances。 已有
+- Fig. 6 ：Ablation study of CNN and Transformer modules。 已有
 
-## 已经实现
-题目
-摘要
-关键词
-Introduction
+# 编译命令示例
+PATH=/Users/bytedance/Library/TinyTeX/bin/universal-darwin:$PATH /Users/bytedance/Library/TinyTeX/bin/universal-darwin/latexmk -g -xelatex -interaction=nonstopmode -file-line-error conference_101719.tex

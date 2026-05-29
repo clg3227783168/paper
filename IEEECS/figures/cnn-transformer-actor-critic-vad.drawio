@@ -1,0 +1,177 @@
+<mxfile host="app.diagrams.net" modified="2026-05-24T00:00:00.000Z" agent="Trae" version="29.2.9">
+  <diagram id="cnn-transformer-actor-critic-vad" name="CNN-Transformer Actor-Critic VAD">
+    <mxGraphModel dx="1420" dy="780" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1500" pageHeight="820" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="CNN-Transformer Actor-Critic Framework for Physiological VAD Control" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=24;fontStyle=1;fontColor=#1F2937;" vertex="1" parent="1">
+          <mxGeometry x="190" y="28" width="1120" height="36" as="geometry"/>
+        </mxCell>
+        <mxCell id="subtitle" value="Closed-loop pump speed regulation from pressure- and flow-related physiological waveforms" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=13;fontColor=#4B5563;" vertex="1" parent="1">
+          <mxGeometry x="320" y="66" width="860" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="env_group" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#334155;strokeWidth=1.5;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="70" y="140" width="300" height="410" as="geometry"/>
+        </mxCell>
+        <mxCell id="env_head" value="Physiological Environment" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0F2FE;strokeColor=#0284C7;strokeWidth=1.2;fontFamily=Helvetica;fontSize=15;fontStyle=1;fontColor=#0F172A;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="95" y="160" width="250" height="42" as="geometry"/>
+        </mxCell>
+        <mxCell id="mcl" value="Cardiovascular / Mock Circulatory Loop&lt;br&gt;&lt;font style=&quot;font-size: 11px;&quot;&gt;nonlinear patient-specific hemodynamics&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#38BDF8;strokeWidth=1.2;fontFamily=Helvetica;fontSize=13;fontColor=#111827;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="105" y="230" width="230" height="78" as="geometry"/>
+        </mxCell>
+        <mxCell id="vad" value="VAD Pump&lt;br&gt;&lt;font style=&quot;font-size: 11px;&quot;&gt;mechanical circulatory support&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#38BDF8;strokeWidth=1.2;fontFamily=Helvetica;fontSize=13;fontStyle=1;fontColor=#111827;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="105" y="342" width="230" height="64" as="geometry"/>
+        </mxCell>
+        <mxCell id="sensors" value="Sensors and State Estimation&lt;br&gt;&lt;font style=&quot;font-size: 11px;&quot;&gt;AoP, LVP, pump flow, CO, current speed&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#38BDF8;strokeWidth=1.2;fontFamily=Helvetica;fontSize=13;fontColor=#111827;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="105" y="448" width="230" height="72" as="geometry"/>
+        </mxCell>
+        <mxCell id="env_loop_1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0284C7;strokeWidth=1.4;endArrow=block;endFill=1;" edge="1" parent="1" source="mcl" target="vad">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="env_loop_2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0284C7;strokeWidth=1.4;endArrow=block;endFill=1;" edge="1" parent="1" source="vad" target="sensors">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="encoder_group" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFBEB;strokeColor=#92400E;strokeWidth=1.5;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="460" y="140" width="430" height="410" as="geometry"/>
+        </mxCell>
+        <mxCell id="encoder_head" value="Shared CNN-Transformer State Encoder" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#D97706;strokeWidth=1.2;fontFamily=Helvetica;fontSize=15;fontStyle=1;fontColor=#0F172A;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="495" y="160" width="360" height="42" as="geometry"/>
+        </mxCell>
+        <mxCell id="state_window" value="Input State Window X&lt;sub&gt;t&lt;/sub&gt;&lt;br&gt;&lt;font style=&quot;font-size: 11px;&quot;&gt;multichannel pressure / flow sequences&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#F59E0B;strokeWidth=1.1;fontFamily=Helvetica;fontSize=13;fontColor=#111827;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="495" y="232" width="160" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="cnn" value="1D-CNN&lt;br&gt;&lt;font style=&quot;font-size: 11px;&quot;&gt;local waveform morphology&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#F59E0B;strokeWidth=1.1;fontFamily=Helvetica;fontSize=13;fontStyle=1;fontColor=#111827;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="695" y="232" width="160" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="positional" value="Temporal Tokens&lt;br&gt;&lt;font style=&quot;font-size: 11px;&quot;&gt;feature sequence + position&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#F59E0B;strokeWidth=1.1;fontFamily=Helvetica;fontSize=13;fontColor=#111827;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="495" y="352" width="160" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="transformer" value="Transformer Encoder&lt;br&gt;&lt;font style=&quot;font-size: 11px;&quot;&gt;cross-cycle temporal dependencies&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#F59E0B;strokeWidth=1.1;fontFamily=Helvetica;fontSize=13;fontStyle=1;fontColor=#111827;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="695" y="352" width="160" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="latent" value="Latent Hemodynamic State z&lt;sub&gt;t&lt;/sub&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#D97706;strokeWidth=1.2;fontFamily=Helvetica;fontSize=13;fontStyle=1;fontColor=#111827;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="580" y="472" width="190" height="48" as="geometry"/>
+        </mxCell>
+        <mxCell id="encoder_edge_1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#B45309;strokeWidth=1.4;endArrow=block;endFill=1;" edge="1" parent="1" source="state_window" target="cnn">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="encoder_edge_2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#B45309;strokeWidth=1.4;endArrow=block;endFill=1;" edge="1" parent="1" source="cnn" target="positional">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="775" y="327"/>
+              <mxPoint x="575" y="327"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="encoder_edge_3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#B45309;strokeWidth=1.4;endArrow=block;endFill=1;" edge="1" parent="1" source="positional" target="transformer">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="encoder_edge_4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#B45309;strokeWidth=1.4;endArrow=block;endFill=1;" edge="1" parent="1" source="transformer" target="latent">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="775" y="447"/>
+              <mxPoint x="675" y="447"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ac_group" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F3FF;strokeColor=#5B21B6;strokeWidth=1.5;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="980" y="140" width="360" height="410" as="geometry"/>
+        </mxCell>
+        <mxCell id="ac_head" value="Actor-Critic Decision Module" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EDE9FE;strokeColor=#7C3AED;strokeWidth=1.2;fontFamily=Helvetica;fontSize=15;fontStyle=1;fontColor=#0F172A;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="1015" y="160" width="290" height="42" as="geometry"/>
+        </mxCell>
+        <mxCell id="actor" value="Actor Policy &amp;pi;&lt;sub&gt;&amp;theta;&lt;/sub&gt;(a&lt;sub&gt;t&lt;/sub&gt;|z&lt;sub&gt;t&lt;/sub&gt;)&lt;br&gt;&lt;font style=&quot;font-size: 11px;&quot;&gt;continuous pump-speed command&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#8B5CF6;strokeWidth=1.2;fontFamily=Helvetica;fontSize=13;fontStyle=1;fontColor=#111827;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1015" y="235" width="290" height="76" as="geometry"/>
+        </mxCell>
+        <mxCell id="critic" value="Critic V&lt;sub&gt;&amp;phi;&lt;/sub&gt;(z&lt;sub&gt;t&lt;/sub&gt;) / Q&lt;sub&gt;&amp;phi;&lt;/sub&gt;(z&lt;sub&gt;t&lt;/sub&gt;, a&lt;sub&gt;t&lt;/sub&gt;)&lt;br&gt;&lt;font style=&quot;font-size: 11px;&quot;&gt;long-term utility and policy guidance&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#8B5CF6;strokeWidth=1.2;fontFamily=Helvetica;fontSize=13;fontStyle=1;fontColor=#111827;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1015" y="378" width="290" height="76" as="geometry"/>
+        </mxCell>
+        <mxCell id="action_box" value="Action a&lt;sub&gt;t&lt;/sub&gt;: target speed &amp;omega;&lt;sup&gt;*&lt;/sup&gt;&lt;sub&gt;t&lt;/sub&gt; or &amp;Delta;&amp;omega;&lt;sub&gt;t&lt;/sub&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EDE9FE;strokeColor=#7C3AED;strokeWidth=1.2;fontFamily=Helvetica;fontSize=12;fontStyle=1;fontColor=#111827;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="1038" y="485" width="245" height="42" as="geometry"/>
+        </mxCell>
+        <mxCell id="latent_to_actor" value="shared representation" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6D28D9;strokeWidth=1.5;endArrow=block;endFill=1;fontFamily=Helvetica;fontSize=11;fontColor=#4C1D95;" edge="1" parent="1" source="latent" target="actor">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="930" y="496"/>
+              <mxPoint x="930" y="273"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="latent_to_critic" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6D28D9;strokeWidth=1.5;endArrow=block;endFill=1;" edge="1" parent="1" source="latent" target="critic">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="930" y="496"/>
+              <mxPoint x="930" y="416"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="critic_to_actor" value="advantage / gradient signal" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;dashPattern=6 4;strokeColor=#7C3AED;strokeWidth=1.3;endArrow=block;endFill=1;fontFamily=Helvetica;fontSize=11;fontColor=#4C1D95;" edge="1" parent="1" source="critic" target="actor">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1320" y="416"/>
+              <mxPoint x="1320" y="273"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="actor_to_action" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6D28D9;strokeWidth=1.4;endArrow=block;endFill=1;" edge="1" parent="1" source="actor" target="action_box">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="reward_group" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ECFDF5;strokeColor=#047857;strokeWidth=1.5;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="300" y="615" width="900" height="130" as="geometry"/>
+        </mxCell>
+        <mxCell id="reward_head" value="Multi-Objective Reward r&lt;sub&gt;t&lt;/sub&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D1FAE5;strokeColor=#059669;strokeWidth=1.2;fontFamily=Helvetica;fontSize=15;fontStyle=1;fontColor=#0F172A;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="330" y="635" width="230" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="reward_1" value="Perfusion Matching&lt;br&gt;&lt;font style=&quot;font-size: 11px;&quot;&gt;adequate circulatory support&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#10B981;strokeWidth=1.1;fontFamily=Helvetica;fontSize=12;fontColor=#111827;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="590" y="635" width="140" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="reward_2" value="Hemodynamic Stability&lt;br&gt;&lt;font style=&quot;font-size: 11px;&quot;&gt;smooth pressure / flow response&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#10B981;strokeWidth=1.1;fontFamily=Helvetica;fontSize=12;fontColor=#111827;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="750" y="635" width="150" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="reward_3" value="Safety Penalties&lt;br&gt;&lt;font style=&quot;font-size: 11px;&quot;&gt;suction, regurgitation, hemolysis&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#10B981;strokeWidth=1.1;fontFamily=Helvetica;fontSize=12;fontColor=#111827;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="920" y="635" width="160" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="reward_4" value="Control Smoothness&lt;br&gt;&lt;font style=&quot;font-size: 11px;&quot;&gt;avoid abrupt speed changes&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#10B981;strokeWidth=1.1;fontFamily=Helvetica;fontSize=12;fontColor=#111827;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="390" y="692" width="150" height="38" as="geometry"/>
+        </mxCell>
+        <mxCell id="reward_formula" value="r&lt;sub&gt;t&lt;/sub&gt; = R&lt;sub&gt;perf&lt;/sub&gt; + R&lt;sub&gt;stable&lt;/sub&gt; - P&lt;sub&gt;safety&lt;/sub&gt; - P&lt;sub&gt;smooth&lt;/sub&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=15;fontStyle=1;fontColor=#065F46;" vertex="1" parent="1">
+          <mxGeometry x="580" y="708" width="520" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="state_arrow" value="state s&lt;sub&gt;t&lt;/sub&gt;: waveform window" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0F766E;strokeWidth=1.7;endArrow=block;endFill=1;fontFamily=Helvetica;fontSize=11;fontColor=#0F766E;" edge="1" parent="1" source="sensors" target="state_window">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="410" y="484"/>
+              <mxPoint x="410" y="267"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="action_to_pump" value="adaptive speed command" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#BE123C;strokeWidth=1.8;endArrow=block;endFill=1;fontFamily=Helvetica;fontSize=11;fontColor=#9F1239;" edge="1" parent="1" source="action_box" target="vad">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1160" y="585"/>
+              <mxPoint x="220" y="585"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="reward_to_critic" value="return target" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#047857;strokeWidth=1.4;endArrow=block;endFill=1;fontFamily=Helvetica;fontSize=11;fontColor=#065F46;" edge="1" parent="1" source="reward_group" target="critic">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1215" y="680"/>
+              <mxPoint x="1215" y="416"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="env_to_reward" value="hemodynamic outcomes" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#047857;strokeWidth=1.4;endArrow=block;endFill=1;fontFamily=Helvetica;fontSize=11;fontColor=#065F46;" edge="1" parent="1" source="sensors" target="reward_group">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="220" y="680"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="training_bar" value="Staged training: offline representation pretraining from physiological data  &amp;rarr;  online actor-critic reinforcement learning through closed-loop interaction" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F1F5F9;strokeColor=#64748B;strokeWidth=1;fontFamily=Helvetica;fontSize=12;fontColor=#334155;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="410" y="565" width="680" height="34" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

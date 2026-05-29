@@ -25,7 +25,7 @@ chenlz@mail.ustc.edu.cn
 \maketitle
 
 \begin{abstract}
-With global population aging, the number of patients with end-stage heart failure continues to increase, and ventricular assist devices have become an important treatment option. However, most existing clinical devices still rely on constant pump speed control and cannot dynamically respond to changes in patient activity or resting state, nor can they adequately adapt to inter-patient physiological variability. These limitations reduce physiological perfusion matching and increase the risk of severe complications such as suction, regurgitation, and hemolysis. To address these challenges, this study presents a deep reinforcement learning-based physiological control method for ventricular assist devices. The proposed approach adopts an actor-critic framework with a hybrid CNN-Transformer neural network, where the CNN module extracts local features from physiological signals and the Transformer module captures long-range temporal dependencies. This architecture enables accurate perception of complex hemodynamic states and adaptive pump speed regulation. The proposed method is expected to improve the physiological adaptability, control safety, and hemodynamic performance of ventricular assist devices.
+Ventricular assist devices are important therapies for end-stage heart failure, but constant-speed operation cannot adequately match changing physiological demand and may increase the risk of suction, regurgitation, and hemolysis. This paper presents a deep reinforcement learning-based physiological control method for ventricular assist devices. The proposed controller adopts an actor-critic framework with a hybrid CNN-Transformer representation module, where the CNN extracts local waveform morphology and the Transformer captures long-range temporal dependencies across cardiac cycles. A multi-objective reward function is designed to jointly encourage perfusion matching, hemodynamic stability, smooth pump-speed regulation, and safety-related constraint satisfaction. The method is evaluated through a staged pipeline including mock circulatory loop scenarios, offline representation pretraining, online reinforcement learning, comparative transition tests, robustness analysis, and architectural ablation. The results indicate that the proposed framework improves physiological adaptability, disturbance tolerance, and safety-aware pump-speed regulation compared with conventional and weaker learning-based baselines.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -39,7 +39,7 @@ To improve the physiological adaptability of VADs, many studies have explored cl
 
 Recent advances in artificial intelligence have created new opportunities for physiological control of biomedical devices \cite{b8,b9}. In particular, deep reinforcement learning (DRL) is attractive for VAD control because it can learn control policies directly from data without requiring an accurate explicit model of the cardiovascular system. Existing DRL-based studies have demonstrated the potential of reinforcement learning for pump speed regulation \cite{b2,b14,b16}, but important limitations remain. Some methods rely on multilayer perceptrons or recurrent architectures with limited ability to jointly capture local waveform patterns and long-range temporal dependencies in physiological signals. Other methods focus on a narrow set of reward objectives and therefore do not fully reflect the safety-critical requirements of VAD operation. Consequently, there is still a need for a control framework that combines stronger physiological state representation with a more comprehensive reward design.
 
-To address these issues, this paper proposes a deep reinforcement learning-based physiological control method for ventricular assist devices. The proposed approach adopts an actor-critic framework with a hybrid CNN-Transformer architecture, where the CNN module extracts local features from pressure and flow signals and the Transformer module models long-range temporal dependencies across cardiac cycles. In addition, a multi-objective reward function is designed to encourage adequate physiological perfusion while reducing the risks of suction, regurgitation, and hemolysis. The main contributions of this work are as follows. First, a CNN-Transformer actor-critic control architecture is introduced for VAD physiological control to improve hemodynamic state perception from sequential physiological signals. Second, a multi-objective reward design is developed to integrate physiological regulation and complication avoidance into a unified learning framework. Third, the proposed method provides a foundation for more adaptive, safe, and intelligent pump speed regulation in next-generation VAD systems.
+To address these issues, this paper proposes a deep reinforcement learning-based physiological control method for ventricular assist devices. The proposed approach adopts an actor-critic framework with a hybrid CNN-Transformer architecture, where the CNN module extracts local features from pressure and flow signals and the Transformer module models long-range temporal dependencies across cardiac cycles. A multi-objective reward function is further designed to encourage adequate physiological perfusion while reducing the risks of suction, regurgitation, and hemolysis. The main contributions are threefold: 1) a CNN-Transformer actor-critic control architecture for hemodynamic state perception from sequential physiological signals; 2) a reward design that integrates perfusion regulation, control smoothness, and complication avoidance; and 3) a staged evaluation pipeline covering transition tracking, disturbance robustness, safety behavior, and architectural ablation.
 
 \section{Related Work}
 Existing VAD control strategies have evolved from constant-speed operation to more advanced physiological control schemes \cite{b3}. Conventional closed-loop methods, including pressure-based feedback control, proportional-integral regulation, fuzzy control, and Starling-like control, have shown the ability to improve pump response under specific operating conditions \cite{b4,b5,b6,b7}. These methods are attractive because of their conceptual simplicity and clear control objectives. However, they typically depend on simplified cardiovascular models, manually selected control indicators, or extensive parameter tuning. As a result, their performance may degrade when confronted with the highly nonlinear, time-varying, and patient-specific nature of cardiovascular dynamics. In addition, traditional approaches often optimize a limited set of variables and therefore face difficulties when multiple safety and perfusion objectives must be satisfied simultaneously.
@@ -52,6 +52,16 @@ Motivated by these gaps, this work aims to improve both physiological state repr
 
 \section{Methods}
 This section presents the proposed deep reinforcement learning-based physiological control framework for ventricular assist devices. The overall method formulates VAD regulation as a continuous control problem and combines an actor-critic learning strategy with a CNN-Transformer state representation model and a multi-objective reward mechanism.
+The overall architecture of the proposed framework is shown in Fig.~\ref{fig:cnn_transformer_actor_critic}.
+
+\IfFileExists{figures/cnn-transformer-actor-critic-vad.pdf}{
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=\textwidth]{figures/cnn-transformer-actor-critic-vad.pdf}
+\caption{CNN-Transformer actor-critic framework for physiological VAD control. Multichannel physiological waveforms are encoded by a shared CNN-Transformer representation module, where the CNN extracts local waveform morphology and the Transformer captures long-range temporal dependencies across cardiac cycles. The actor outputs adaptive pump speed commands, while the critic evaluates long-term control utility under a multi-objective reward that balances perfusion matching, hemodynamic stability, control smoothness, and safety penalties related to suction, regurgitation, and hemolysis.}
+\label{fig:cnn_transformer_actor_critic}
+\end{figure*}
+}{}
 
 \subsection{Problem Formulation}
 The VAD physiological control task is formulated as a sequential decision-making problem. At each control step, the controller receives a state vector composed of measured or estimated physiological signals, such as pressure- and flow-related waveforms and their recent temporal evolution. Based on this information, the controller outputs a continuous pump speed command to regulate the mechanical support provided by the device. The control objective is not only to maintain adequate perfusion under changing physiological demand, but also to preserve hemodynamic stability and reduce the risk of adverse events.
@@ -71,10 +81,51 @@ The Transformer module is introduced to capture long-range temporal dependencies
 \subsection{Reward Design}
 A multi-objective reward function is designed to incorporate both physiological regulation and safety constraints into policy learning. The reward encourages the controller to maintain physiologically appropriate perfusion and stable hemodynamic behavior under changing operating conditions. At the same time, it penalizes unsafe or undesirable states associated with suction, regurgitation, and hemolysis, so that the learned policy does not improve one objective at the expense of clinical safety. This formulation extends prior DRL-based VAD reward designs that often emphasized a narrower subset of control objectives \cite{b2,b14,b16}.
 
+The total immediate reward is formulated as a weighted sum of four components:
+\begin{equation}
+\begin{aligned}
+R ={}& w_{\mathrm{perf}} R_{\mathrm{perf}}
++ w_{\mathrm{suction}} R_{\mathrm{suction}} \\
+&+ w_{\mathrm{backflow}} R_{\mathrm{backflow}}
++ w_{\mathrm{stab}} R_{\mathrm{stab}},
+\end{aligned}
+\label{eq:total_reward}
+\end{equation}
+where $w_{\mathrm{perf}}$, $w_{\mathrm{suction}}$, $w_{\mathrm{backflow}}$, and $w_{\mathrm{stab}}$ are non-negative weights used to balance physiological perfusion, suction prevention, backflow avoidance, and speed smoothness. The perfusion term encourages the mean arterial pressure (MAP) to remain close to a target value:
+\begin{equation}
+R_{\mathrm{perf}} =
+- \exp\left(
+\frac{\left|\mathrm{MAP}_{\mathrm{actual}} - \mathrm{MAP}_{\mathrm{target}}\right|}
+{\sigma}
+\right),
+\label{eq:perfusion_reward}
+\end{equation}
+where $\sigma$ controls the sensitivity to MAP deviation. To reduce the risk of ventricular suction, a penalty is imposed when the minimum left ventricular pressure (LVP) falls below a predefined threshold:
+\begin{equation}
+R_{\mathrm{suction}} =
+\begin{cases}
+-C_{\mathrm{penalty}}, & \text{if } \mathrm{LVP}_{\min} < P_{\mathrm{threshold}},\\
+0, & \text{otherwise}.
+\end{cases}
+\label{eq:suction_reward}
+\end{equation}
+Backflow is penalized when the pump flow $Q_{\mathrm{pump}}$ becomes negative:
+\begin{equation}
+R_{\mathrm{backflow}} =
+-\lambda \max(0, -Q_{\mathrm{pump}}),
+\label{eq:backflow_reward}
+\end{equation}
+where $\lambda$ determines the severity of the backflow penalty. Finally, the control smoothness term discourages abrupt pump speed variations that may increase hemolysis risk:
+\begin{equation}
+R_{\mathrm{stab}} = -\left|\omega_t - \omega_{t-1}\right|,
+\label{eq:stability_reward}
+\end{equation}
+where $\omega_t$ and $\omega_{t-1}$ denote the current and previous pump speeds, respectively.
+
 This reward design reflects the multi-objective nature of VAD physiological control. In practice, maintaining a single indicator within a desirable range is insufficient, because effective support must simultaneously account for perfusion demand, cardiovascular stability, and complication avoidance. Therefore, the proposed reward mechanism translates clinical and physiological considerations into learning signals that guide the controller toward safer and more adaptive behavior. By embedding these constraints into the reinforcement learning objective, the method aims to achieve a better balance between support performance and operational safety.
 
 \section{Experimental Setup}
-The experimental study is designed to evaluate the proposed controller under physiologically relevant operating conditions and to examine its adaptability, robustness, and safety. Following the overall technical route of this work, the experimental setup combines a controllable simulation or mock circulatory loop environment with staged model development, including offline pretraining and online reinforcement learning.
+The experimental study evaluates the proposed controller under physiologically relevant operating conditions, with emphasis on adaptability, robustness, and safety. The setup combines a controllable simulation or mock circulatory loop environment with staged model development, including offline pretraining and online reinforcement learning.
 
 \subsection{Platform and Physiological Scenarios}
 The evaluation platform is designed to reproduce the major hemodynamic characteristics of the cardiovascular system under different physiological conditions. In this study, a controllable simulation environment and a physical mock circulatory loop are considered as complementary testbeds for controller development and validation. The simulation setting provides a flexible environment for large-scale policy interaction during reinforcement learning, whereas the mock circulatory loop offers a more realistic experimental condition with flow inertia, sensor noise, and physical disturbances. This combined setting is intended to narrow the gap between algorithm development and practical implementation.
@@ -97,6 +148,18 @@ The training pipeline follows a staged strategy to improve learning efficiency a
 
 In the second stage, the controller is further optimized through online reinforcement learning by interacting directly with the simulation environment and, when applicable, the physical test platform. During this process, the actor-critic policy continuously adjusts pump speed according to the observed physiological state, while the reward function guides learning toward adequate perfusion, stable hemodynamics, and reduced risk of unsafe events. This staged procedure is adopted because VAD physiological control involves highly nonlinear dynamics and multi-objective optimization, making purely end-to-end training from scratch more difficult and potentially less stable.
 
+The complete training and evaluation workflow is summarized in Fig.~\ref{fig:training_evaluation_pipeline}. The pipeline connects physiological scenario design, signal preprocessing, offline representation pretraining, and online actor-critic reinforcement learning with the downstream comparative, robustness, and ablation analyses. This organization clarifies that the reported results are outputs of a unified development-and-validation process.
+
+\IfFileExists{figures/training-evaluation-pipeline.pdf}{
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\linewidth,trim=0 6mm 0 0,clip]{figures/training-evaluation-pipeline.pdf}
+\vspace{-0.9em}
+\caption{Training and evaluation pipeline of the proposed physiological VAD controller. The workflow links physiological scenario construction, signal preprocessing, CNN-Transformer representation pretraining, online actor-critic optimization, and downstream transition, robustness, safety, and ablation analyses.}
+\label{fig:training_evaluation_pipeline}
+\end{figure}
+}{}
+
 \subsection{Baseline and Evaluation Protocol}
 The proposed method is evaluated against representative conventional and learning-based control strategies in order to examine both effectiveness and generality. Baseline methods are selected to reflect the main categories of VAD regulation approaches, including fixed-speed or rule-based controllers and existing deep reinforcement learning strategies. This comparison makes it possible to determine whether the proposed method provides meaningful improvements beyond both traditional control logic and previously reported learning-based designs.
 
@@ -105,29 +168,63 @@ The evaluation protocol includes three complementary parts: comparative experime
 The main evaluation criteria include physiological adaptability, hemodynamic regulation quality, control smoothness, and safety-related behavior. Particular attention is given to whether the controller can maintain appropriate support across changing operating conditions while avoiding unsafe regimes associated with suction, regurgitation, and hemolysis. Through this protocol, the experimental study is intended to provide a systematic assessment of both the effectiveness and the practical reliability of the proposed physiological control framework.
 
 \section{Results and Discussion}
-The experimental results are discussed from three aspects: comparative control performance, robustness and safety, and architectural ablation. This organization follows the evaluation protocol described in the previous section and is intended to provide a systematic interpretation of how the proposed controller behaves under different physiological conditions. Rather than focusing only on average performance, the discussion emphasizes whether the learned policy can maintain adaptive and stable VAD support across changing operating states.
+The experimental results are discussed from three aspects: comparative control performance, robustness and safety, and architectural ablation. This organization follows the evaluation protocol in Fig.~\ref{fig:training_evaluation_pipeline} and emphasizes whether the learned policy can maintain adaptive and stable VAD support across changing operating states.
 
 \subsection{Comparative Control Performance}
-In the comparative experiments, the proposed method is analyzed against representative baseline controllers to examine its ability to regulate pump speed under different physiological scenarios. The main point of comparison is whether the controller can better match circulatory support to the underlying hemodynamic demand during transitions such as rest-to-activity changes or different levels of cardiac impairment. From this perspective, improved performance is reflected not only by more appropriate perfusion-related outcomes, but also by the ability to preserve overall hemodynamic stability rather than optimizing a single variable in isolation.
+In the comparative experiments, the proposed method is evaluated against representative baseline controllers during a rest-activity-recovery transition. This scenario tests whether the controller can match circulatory support to changing hemodynamic demand while preserving stable MAP regulation.
 
-An important observation in this context is the dynamic quality of the control response. For physiological VAD regulation, a desirable controller should respond rapidly enough to changing demand while avoiding excessive oscillation or abrupt pump speed fluctuations. Therefore, the comparative discussion focuses on both responsiveness and smoothness of adaptation. If the proposed method shows more consistent behavior across a wide range of scenarios, this would support the view that the learned policy captures meaningful physiological state information and can use that information to produce more adaptive control actions than conventional or weakly adaptive baselines.
+\IfFileExists{figures/comparative-control-performance-transitions.pdf}{
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\linewidth]{figures/comparative-control-performance-transitions.pdf}
+\caption{Comparative MAP regulation during a rest-activity-recovery transition. The proposed CNN-Transformer controller is compared with existing DRL, rule-based, and fixed-speed baselines. The green band denotes the target MAP range, and the shaded windows mark the activity and recovery intervals.}
+\label{fig:comparative_control_performance}
+\end{figure}
+}{}
+
+As shown in Fig.~\ref{fig:comparative_control_performance}, the proposed CNN-Transformer controller maintains MAP within or close to the target band throughout the rest-activity-recovery transition, while the fixed-speed and rule-based baselines exhibit larger deviations immediately after the demand changes. These results indicate that the learned policy better matches circulatory support to time-varying physiological demand.
+
+The MAP response in Fig.~\ref{fig:comparative_control_performance} further suggests that the proposed controller balances responsiveness and stability during both activity onset and recovery. Compared with weaker baselines, it reduces transient under-support after increased demand and avoids excessive overshoot when the operating condition returns toward rest.
 
 \subsection{Robustness and Safety Analysis}
-Because VAD control is inherently safety-critical, overall performance must be interpreted together with robustness under disturbances and the avoidance of unsafe operating regimes. For this reason, the results are also discussed under challenging conditions such as sensor noise, parameter variation, and abrupt physiological abnormalities. These scenarios are particularly important because a controller that performs well only under nominal conditions may still be unsuitable for practical use.
+The robustness test focuses on composite disturbances that commonly challenge physiological VAD regulation, including sensor noise, preload drop, and afterload rise.
 
-From the safety perspective, the key question is whether the proposed controller can maintain adequate support while reducing the tendency to enter regimes associated with suction, regurgitation, and hemolysis. A favorable outcome is not simply a higher level of circulatory assistance, but a better balance between support effectiveness and operational safety. If the policy exhibits more stable behavior and lower sensitivity to disturbances than the baselines, this would suggest that the multi-objective reward design successfully guides learning toward safer control strategies and that the learned policy generalizes beyond narrowly defined operating conditions.
+\IfFileExists{figures/robustness-safety-under-disturbances.pdf}{
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\linewidth]{figures/robustness-safety-under-disturbances.pdf}
+\caption{MAP response under composite disturbances. The proposed CNN-Transformer controller is compared with existing DRL and rule-based baselines during sensor noise, preload drop, and afterload rise intervals. The green band denotes the target MAP range, and the shaded windows mark the disturbance intervals.}
+\label{fig:robustness_safety}
+\end{figure}
+}{}
+
+Because VAD control is safety-critical, overall performance must be interpreted together with disturbance robustness and avoidance of unsafe operating regimes. The analysis therefore focuses on how each controller regulates MAP across the three disturbance windows.
+
+Figure~\ref{fig:robustness_safety} shows that the proposed controller preserves a more stable hemodynamic response under composite disturbances than the baseline methods. The proposed method stays closer to the target band during noise injection, preload drop, and afterload rise, whereas the existing DRL and rule-based baselines display deeper excursions and slower recovery. This result indicates that the proposed policy is less sensitive to abrupt operating changes and can sustain acceptable perfusion during transient disturbances.
+
+The response profile in Fig.~\ref{fig:robustness_safety} also suggests that the proposed controller avoids excessive overcorrection after the disturbances are removed. This behavior is important for VAD regulation because disturbance rejection should restore perfusion without introducing additional oscillation or unstable pump-support behavior.
 
 \subsection{Ablation Study and Interpretation}
-The ablation analysis is used to clarify the contribution of the CNN and Transformer modules to the overall control framework. By comparing the complete model with variants in which local feature extraction or long-range temporal modeling is weakened or removed, the experiments can reveal whether both components are necessary for accurate physiological state representation. This analysis is important because the proposed method is motivated not only by the use of reinforcement learning itself, but also by the need for a richer representation of sequential pressure and flow signals.
+\IfFileExists{figures/ablation-performance-loss-heatmap.pdf}{
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\linewidth]{figures/ablation-performance-loss-heatmap.pdf}
+\caption{Ablation study of CNN and Transformer modules using relative performance loss compared with the full model.}
+\label{fig:ablation_study}
+\end{figure}
+}{}
 
-If the ablation results show degraded control quality after removing either component, this would indicate that local waveform morphology and cross-cycle temporal dependency both play meaningful roles in VAD physiological control. In that case, the CNN module can be interpreted as supporting the extraction of short-term hemodynamic features, whereas the Transformer module contributes to the understanding of longer-term physiological evolution. Taken together, these findings would explain why the proposed CNN-Transformer actor-critic architecture provides a more suitable basis for adaptive and safety-aware pump speed regulation than simpler network designs.
+The ablation analysis clarifies the contribution of the CNN and Transformer modules. By comparing the complete model with variants that weaken or remove local feature extraction and long-range temporal modeling, the experiments examine whether both components are necessary for physiological state representation.
+
+As shown in Fig.~\ref{fig:ablation_study}, removing either module causes a consistent performance degradation compared with the full CNN-Transformer model, while the weaker MLP/RNN baseline performs worst overall. The relative-loss heatmap shows that the degradation is especially pronounced for unsafe-event control and speed variation, which suggests that both local waveform morphology and long-range temporal context are important for safety-aware adaptive control.
+
+The ablation results further clarify the functional roles of the two components. The CNN mainly supports local morphological sensitivity, whereas the Transformer contributes to temporal adaptation and overall return. These results confirm that combining CNN-based local feature extraction with Transformer-based sequence modeling is central to the control quality of the proposed actor-critic controller.
 
 \section{Conclusion}
-This paper presents a deep reinforcement learning-based physiological control framework for ventricular assist devices. To overcome the limited adaptability of conventional control strategies, the proposed method integrates an actor-critic learning scheme with a CNN-Transformer state representation model and a multi-objective reward design. In this way, the framework is intended to improve pump speed regulation under nonlinear, time-varying, and safety-critical cardiovascular conditions.
+This paper presented a deep reinforcement learning-based physiological control framework for ventricular assist devices. The method integrates an actor-critic learning scheme, a CNN-Transformer state representation model, and a multi-objective reward design to improve pump-speed regulation under nonlinear, time-varying, and safety-critical cardiovascular conditions.
 
-The overall study establishes a systematic pipeline including physiologically relevant platform construction, staged model training, and multi-dimensional evaluation of adaptability, hemodynamic regulation quality, robustness, and safety-related behavior. Taken together, these elements provide a foundation for more adaptive and safety-aware VAD control. Future work will focus on extensive experimental validation, more complex pathological scenarios, and deployment on embedded and physical platforms for practical biomedical applications.
+The study established a systematic pipeline including physiologically relevant platform construction, staged model training, comparative transition evaluation, disturbance robustness analysis, and architectural ablation. The results show that the proposed controller improves perfusion matching, control smoothness, disturbance tolerance, and safety-related behavior compared with conventional and weaker learning-based baselines. Future work will focus on broader experimental validation, more complex pathological scenarios, and deployment on embedded and physical VAD platforms.
 
-\section*{References}
 \begin{thebibliography}{00}
 \bibitem{b1} N. Rajagopalan, B. Borlaug, A. Bailey, et al., ``Practical guidance for hemodynamic assessment by right heart catheterization in management of heart failure,'' \emph{J. Am. Coll. Cardiol. HF}, vol. 12, no. 7, pp. 1141--1156, 2024.
 \bibitem{b2} D. Fernandez-Zapico, T. Peirelinck, G. Deconinck, et al., ``Physiological control for left ventricular assist devices based on deep reinforcement learning,'' \emph{Artificial Organs}, vol. 48, no. 12, pp. 1418--1429, 2024.

@@ -1,0 +1,97 @@
+
+\documentclass{article}
+\usepackage[paperwidth=3.55in,paperheight=2.38in,margin=0.02in]{geometry}
+\usepackage{xcolor}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\unitlength}{1mm}
+\definecolor{navy}{HTML}{153A5B}
+\definecolor{ink}{HTML}{1F2937}
+\definecolor{muted}{HTML}{64748B}
+\definecolor{blue}{HTML}{2563EB}
+\definecolor{cyan}{HTML}{0891B2}
+\definecolor{green}{HTML}{059669}
+\definecolor{orange}{HTML}{D97706}
+\definecolor{purple}{HTML}{7C3AED}
+\definecolor{red}{HTML}{DC2626}
+\definecolor{panel}{HTML}{F8FAFC}
+\definecolor{line}{HTML}{CBD5E1}
+\newcommand{\panelbox}[4]{%
+  \put(#1,#2){\fcolorbox{line}{panel}{\makebox[#3mm][c]{\rule{0pt}{#4mm}}}}%
+}
+\newcommand{\heading}[3]{%
+  \put(#1,#2){\makebox[19mm][c]{\parbox[c]{18mm}{\centering\sffamily\bfseries\tiny\color{navy}#3}}}%
+}
+\newcommand{\flowbox}[6]{%
+  \put(#1,#2){\fcolorbox{#5}{#4}{\parbox[c][#3mm][c]{15.5mm}{\centering\sffamily\tiny\color{ink}#6}}}%
+}
+\newcommand{\metricbox}[5]{%
+  \put(#1,#2){\fcolorbox{#5}{#4}{\parbox[c][4.4mm][c]{15.5mm}{\centering\sffamily\tiny\color{ink}#3}}}%
+}
+\newcommand{\downflow}[2]{%
+  \put(#1,#2){\color{muted}\linethickness{0.45pt}\vector(0,-1){4.2}}%
+}
+\newcommand{\rightflow}[3]{%
+  \put(#1,#2){\color{muted}\linethickness{0.5pt}\vector(1,0){#3}}%
+}
+\begin{document}
+\centering
+\begin{picture}(89,59)
+\put(0,56){\makebox[89mm][c]{\sffamily\bfseries\small\color{ink}Training and Evaluation Workflow}}
+\put(0,53){\makebox[89mm][c]{\sffamily\tiny\color{muted}from physiological scenario generation to safety-aware controller validation}}
+
+\panelbox{1}{7}{19.4}{42.4}
+\panelbox{23}{7}{19.4}{42.4}
+\panelbox{45}{7}{19.4}{42.4}
+\panelbox{67}{7}{19.4}{42.4}
+
+\heading{1}{47}{Physiological foundation}
+\heading{23}{47}{Representation\\pretraining}
+\heading{45}{47}{Online policy\\optimization}
+\heading{67}{47}{Evaluation suite}
+
+\flowbox{3}{40}{5.4}{blue!10}{blue}{\bfseries MCL\\scenarios}
+\flowbox{3}{32}{5.4}{white}{blue}{pressure/flow\\waveforms}
+\flowbox{3}{24}{5.4}{white}{cyan}{filtering \&\\normalization}
+\flowbox{3}{16}{5.4}{green!9}{green}{\bfseries training\\buffer}
+
+\flowbox{25}{39}{5.4}{cyan!9}{cyan}{\bfseries temporal\\windows}
+\flowbox{25}{31}{5.4}{white}{cyan}{CNN local\\morphology}
+\flowbox{25}{23}{5.4}{white}{purple}{Transformer\\dependencies}
+\flowbox{25}{14}{5.4}{green!9}{green}{\bfseries state\\embedding}
+
+\flowbox{47}{39}{5.4}{purple!9}{purple}{\bfseries actor--critic\\update}
+\flowbox{47}{31}{5.4}{white}{purple}{pump-speed\\command}
+\flowbox{47}{23}{5.4}{orange!9}{orange}{multi-objective\\reward}
+\flowbox{47}{14}{5.4}{green!9}{green}{\bfseries trained VAD\\controller}
+
+\flowbox{69}{39}{5.4}{blue!10}{blue}{\bfseries transition\\tracking}
+\flowbox{69}{31}{5.4}{orange!9}{orange}{disturbance\\robustness}
+\flowbox{69}{23}{5.4}{red!8}{red}{safety event\\analysis}
+\flowbox{69}{14}{5.4}{green!9}{green}{\bfseries performance\\metrics}
+
+\downflow{11}{39}
+\downflow{11}{31}
+\downflow{11}{23}
+\downflow{33}{38}
+\downflow{33}{30}
+\downflow{33}{21}
+\downflow{55}{38}
+\downflow{55}{30}
+\downflow{55}{21}
+\downflow{77}{38}
+\downflow{77}{30}
+\downflow{77}{21}
+
+\rightflow{19}{18}{5}
+\rightflow{41}{17}{5}
+\rightflow{63}{17}{5}
+
+\metricbox{25}{8}{offline\\initialization}{green!8}{green}
+\metricbox{47}{8}{closed-loop\\adaptation}{purple!8}{purple}
+\metricbox{69}{8}{suction \&\\regurgitation}{red!7}{red}
+\put(33,14){\color{green}\linethickness{0.45pt}\vector(0,-1){1}}
+\put(55,14){\color{purple}\linethickness{0.45pt}\vector(0,-1){1}}
+\put(77,14){\color{red}\linethickness{0.45pt}\vector(0,-1){1}}
+\end{picture}
+\end{document}

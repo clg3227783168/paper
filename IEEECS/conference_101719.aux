@@ -5,9 +5,9 @@
 \citation{b4,b5,b6,b7}
 \citation{b8,b9}
 \citation{b2,b14,b16}
+\@writefile{toc}{\contentsline {section}{\numberline {I}Introduction}{1}{}\protected@file@percent }
 \citation{b3}
 \citation{b4,b5,b6,b7}
-\@writefile{toc}{\contentsline {section}{\numberline {I}Introduction}{1}{}\protected@file@percent }
 \citation{b8}
 \citation{b10}
 \citation{b12}
@@ -21,17 +21,33 @@
 \citation{b12}
 \citation{b2,b14,b15,b16}
 \citation{b2,b14,b16}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces CNN-Transformer actor-critic framework for physiological VAD control. Multichannel physiological waveforms are encoded by a shared CNN-Transformer representation module, where the CNN extracts local waveform morphology and the Transformer captures long-range temporal dependencies across cardiac cycles. The actor outputs adaptive pump speed commands, while the critic evaluates long-term control utility under a multi-objective reward that balances perfusion matching, hemodynamic stability, control smoothness, and safety penalties related to suction, regurgitation, and hemolysis.}}{3}{}\protected@file@percent }
+\newlabel{fig:cnn_transformer_actor_critic}{{1}{3}{}{figure.1}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-C}}CNN-Transformer Architecture}{3}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-D}}Reward Design}{3}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {IV}Experimental Setup}{3}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-A}}Platform and Physiological Scenarios}{3}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-B}}Data Collection and Training Procedure}{3}{}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Physical mock circulatory loop platform for ventricular assist device physiological control experiments. The platform includes a pulsatile motor, volume chamber, compliance chamber, damping chamber, flowmeter, and left ventricular chamber to emulate cardiovascular hemodynamic conditions.}}{4}{}\protected@file@percent }
-\newlabel{fig:mcl_platform}{{1}{4}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-C}}Baseline and Evaluation Protocol}{4}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {V}Results and Discussion}{4}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-A}}Comparative Control Performance}{4}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-B}}Robustness and Safety Analysis}{4}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-D}}Reward Design}{4}{}\protected@file@percent }
+\newlabel{eq:total_reward}{{1}{4}{}{equation.1}{}}
+\newlabel{eq:perfusion_reward}{{2}{4}{}{equation.2}{}}
+\newlabel{eq:suction_reward}{{3}{4}{}{equation.3}{}}
+\newlabel{eq:backflow_reward}{{4}{4}{}{equation.4}{}}
+\newlabel{eq:stability_reward}{{5}{4}{}{equation.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {IV}Experimental Setup}{4}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-A}}Platform and Physiological Scenarios}{4}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-B}}Data Collection and Training Procedure}{4}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Physical mock circulatory loop platform for ventricular assist device physiological control experiments. The platform includes a pulsatile motor, volume chamber, compliance chamber, damping chamber, flowmeter, and left ventricular chamber to emulate cardiovascular hemodynamic conditions.}}{5}{}\protected@file@percent }
+\newlabel{fig:mcl_platform}{{2}{5}{}{figure.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-C}}Baseline and Evaluation Protocol}{5}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Training and evaluation pipeline of the proposed physiological VAD controller. The workflow links physiological scenario construction, signal preprocessing, CNN-Transformer representation pretraining, online actor-critic optimization, and downstream transition, robustness, safety, and ablation analyses.}}{5}{}\protected@file@percent }
+\newlabel{fig:training_evaluation_pipeline}{{3}{5}{}{figure.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {V}Results and Discussion}{5}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-A}}Comparative Control Performance}{5}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Comparative MAP regulation during a rest-activity-recovery transition. The proposed CNN-Transformer controller is compared with existing DRL, rule-based, and fixed-speed baselines. The green band denotes the target MAP range, and the shaded windows mark the activity and recovery intervals.}}{6}{}\protected@file@percent }
+\newlabel{fig:comparative_control_performance}{{4}{6}{}{figure.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-B}}Robustness and Safety Analysis}{6}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces MAP response under composite disturbances. The proposed CNN-Transformer controller is compared with existing DRL and rule-based baselines during sensor noise, preload drop, and afterload rise intervals. The green band denotes the target MAP range, and the shaded windows mark the disturbance intervals.}}{6}{}\protected@file@percent }
+\newlabel{fig:robustness_safety}{{5}{6}{}{figure.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-C}}Ablation Study and Interpretation}{6}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Ablation study of CNN and Transformer modules using relative performance loss compared with the full model.}}{6}{}\protected@file@percent }
+\newlabel{fig:ablation_study}{{6}{6}{}{figure.6}{}}
 \bibcite{b1}{1}
 \bibcite{b2}{2}
 \bibcite{b3}{3}
@@ -48,7 +64,6 @@
 \bibcite{b14}{14}
 \bibcite{b15}{15}
 \bibcite{b16}{16}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-C}}Ablation Study and Interpretation}{5}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {VI}Conclusion}{5}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{References}{5}{}\protected@file@percent }
-\gdef \@abspage@last{5}
+\@writefile{toc}{\contentsline {section}{\numberline {VI}Conclusion}{7}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{References}{7}{}\protected@file@percent }
+\gdef \@abspage@last{7}

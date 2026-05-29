@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="760" viewBox="0 0 420 760">
+  <rect width="420" height="760" fill="white"/>
+  <text x="210" y="42" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" fill="#1F2937">Training and Evaluation Pipeline</text>
+  <text x="70" y="80" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#475569">Training</text>
+  <g font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#1F2937" text-anchor="middle">
+    <rect x="70" y="92" width="280" height="52" rx="8" fill="#DBEAFE" stroke="#2563EB" stroke-width="1.6"/>
+    <text x="210" y="123">Scenario and platform setup</text>
+    <text x="210" y="164" font-size="24" fill="#1F2937">↓</text>
+    <rect x="70" y="180" width="280" height="52" rx="8" fill="#DCFCE7" stroke="#16A34A" stroke-width="1.6"/>
+    <text x="210" y="211">Data collection and preprocessing</text>
+    <text x="210" y="252" font-size="24" fill="#1F2937">↓</text>
+    <rect x="70" y="268" width="280" height="52" rx="8" fill="#FEF3C7" stroke="#D97706" stroke-width="1.6"/>
+    <text x="210" y="299">Offline representation pretraining</text>
+    <text x="210" y="340" font-size="24" fill="#1F2937">↓</text>
+    <rect x="70" y="356" width="280" height="52" rx="8" fill="#FCE7F3" stroke="#DB2777" stroke-width="1.6"/>
+    <text x="210" y="387">Online actor-critic learning</text>
+    <text x="210" y="428" font-size="24" fill="#1F2937">↓</text>
+    <rect x="70" y="444" width="280" height="52" rx="8" fill="#EDE9FE" stroke="#7C3AED" stroke-width="1.6"/>
+    <text x="210" y="475">Trained VAD controller</text>
+  </g>
+  <text x="70" y="538" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#475569">Evaluation</text>
+  <g font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#1F2937" text-anchor="middle">
+    <rect x="70" y="552" width="280" height="56" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+    <text x="210" y="575">Comparative, robustness,</text>
+    <text x="210" y="594">and ablation tests</text>
+    <text x="210" y="640" font-size="24" fill="#1F2937">↓</text>
+    <rect x="70" y="656" width="280" height="52" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+    <text x="210" y="687">Performance and safety metrics</text>
+  </g>
+  <text x="210" y="732" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#475569">Compact workflow from controller training to evaluation.</text>
+</svg>
