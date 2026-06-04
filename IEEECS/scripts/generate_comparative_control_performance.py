@@ -41,15 +41,19 @@ SPEED_RANGE = (7.6, 9.8)
 
 CONTROLLERS = [
     "Proposed CNN-Transformer",
-    "Existing DRL",
-    "Rule-based",
-    "Fixed-speed",
+    "MLP Actor-Critic",
+    "Transformer-only Actor-Critic",
+    "CNN-only Actor-Critic",
+    "Reward ablation baseline",
+    "Fixed-speed baseline",
 ]
 PALETTE = {
     "Proposed CNN-Transformer": "#0B8A5A",
-    "Existing DRL": "#2563EB",
-    "Rule-based": "#64748B",
-    "Fixed-speed": "#9333EA",
+    "MLP Actor-Critic": "#64748B",
+    "Transformer-only Actor-Critic": "#D97706",
+    "CNN-only Actor-Critic": "#CC2936",
+    "Reward ablation baseline": "#2563EB",
+    "Fixed-speed baseline": "#9333EA",
 }
 SCENARIOS = [
     "Rest to activity",
@@ -89,17 +93,27 @@ VIRTUAL_METRIC_MEANS = {
         "Activity to rest": MetricSpec((2.6, 0.34), (0.23, 0.04), (5.2, 0.8), (0.28, 0.04)),
         "HF severity change": MetricSpec((3.5, 0.45), (0.31, 0.05), (7.4, 1.1), (0.36, 0.06)),
     },
-    "Existing DRL": {
-        "Rest to activity": MetricSpec((4.1, 0.55), (0.35, 0.06), (8.8, 1.3), (0.27, 0.04)),
-        "Activity to rest": MetricSpec((3.8, 0.50), (0.33, 0.05), (8.0, 1.2), (0.25, 0.04)),
-        "HF severity change": MetricSpec((5.2, 0.68), (0.47, 0.07), (11.2, 1.7), (0.33, 0.05)),
+    "MLP Actor-Critic": {
+        "Rest to activity": MetricSpec((6.6, 0.78), (0.66, 0.09), (14.2, 1.9), (0.25, 0.04)),
+        "Activity to rest": MetricSpec((6.0, 0.70), (0.60, 0.08), (12.8, 1.7), (0.23, 0.04)),
+        "HF severity change": MetricSpec((7.6, 0.90), (0.76, 0.10), (17.4, 2.3), (0.30, 0.05)),
     },
-    "Rule-based": {
-        "Rest to activity": MetricSpec((5.6, 0.72), (0.52, 0.08), (12.5, 1.9), (0.22, 0.04)),
-        "Activity to rest": MetricSpec((5.0, 0.64), (0.46, 0.07), (11.1, 1.7), (0.20, 0.03)),
-        "HF severity change": MetricSpec((6.9, 0.86), (0.64, 0.09), (15.8, 2.2), (0.29, 0.05)),
+    "Transformer-only Actor-Critic": {
+        "Rest to activity": MetricSpec((4.7, 0.58), (0.45, 0.07), (9.6, 1.3), (0.34, 0.05)),
+        "Activity to rest": MetricSpec((4.4, 0.54), (0.41, 0.06), (8.8, 1.2), (0.31, 0.05)),
+        "HF severity change": MetricSpec((5.8, 0.72), (0.56, 0.08), (12.6, 1.7), (0.39, 0.06)),
     },
-    "Fixed-speed": {
+    "CNN-only Actor-Critic": {
+        "Rest to activity": MetricSpec((5.4, 0.66), (0.52, 0.08), (11.7, 1.6), (0.22, 0.04)),
+        "Activity to rest": MetricSpec((5.0, 0.60), (0.49, 0.07), (10.8, 1.5), (0.20, 0.03)),
+        "HF severity change": MetricSpec((6.5, 0.82), (0.63, 0.09), (15.2, 2.1), (0.27, 0.05)),
+    },
+    "Reward ablation baseline": {
+        "Rest to activity": MetricSpec((3.9, 0.50), (0.36, 0.06), (7.9, 1.1), (0.55, 0.08)),
+        "Activity to rest": MetricSpec((3.7, 0.46), (0.34, 0.05), (7.4, 1.0), (0.51, 0.08)),
+        "HF severity change": MetricSpec((4.9, 0.62), (0.46, 0.07), (10.5, 1.5), (0.62, 0.09)),
+    },
+    "Fixed-speed baseline": {
         "Rest to activity": MetricSpec((7.4, 0.90), (0.72, 0.10), (21.5, 2.6), (0.04, 0.01)),
         "Activity to rest": MetricSpec((6.6, 0.78), (0.65, 0.09), (19.4, 2.4), (0.04, 0.01)),
         "HF severity change": MetricSpec((9.1, 1.05), (0.84, 0.12), (25.2, 3.0), (0.04, 0.01)),
@@ -194,40 +208,28 @@ def generate_transition_trace() -> pd.DataFrame:
     demand, target_flow, _ = demand_profile(t)
     controller_specs = {
         "Proposed CNN-Transformer": {
-            "tau": 5.4,
-            "map_err": 2.5,
-            "flow_lag": 0.13,
-            "speed_gain": 1.16,
-            "ripple": 0.26,
-            "overshoot": 1.15,
-            "noise": 0.36,
+            "tau": 5.4, "map_err": 2.5, "flow_lag": 0.13, "speed_gain": 1.16,
+            "ripple": 0.26, "overshoot": 1.15, "noise": 0.36,
         },
-        "Existing DRL": {
-            "tau": 8.8,
-            "map_err": 4.1,
-            "flow_lag": 0.26,
-            "speed_gain": 0.94,
-            "ripple": 0.42,
-            "overshoot": 1.55,
-            "noise": 0.50,
+        "MLP Actor-Critic": {
+            "tau": 15.5, "map_err": 6.2, "flow_lag": 0.62, "speed_gain": 0.76,
+            "ripple": 0.45, "overshoot": 1.10, "noise": 0.55,
         },
-        "Rule-based": {
-            "tau": 13.5,
-            "map_err": 5.9,
-            "flow_lag": 0.44,
-            "speed_gain": 0.70,
-            "ripple": 0.38,
-            "overshoot": 0.85,
-            "noise": 0.42,
+        "Transformer-only Actor-Critic": {
+            "tau": 8.6, "map_err": 4.3, "flow_lag": 0.32, "speed_gain": 1.02,
+            "ripple": 0.44, "overshoot": 1.45, "noise": 0.50,
         },
-        "Fixed-speed": {
-            "tau": 36.0,
-            "map_err": 8.3,
-            "flow_lag": 0.82,
-            "speed_gain": 0.00,
-            "ripple": 0.10,
-            "overshoot": 0.20,
-            "noise": 0.28,
+        "CNN-only Actor-Critic": {
+            "tau": 12.4, "map_err": 5.1, "flow_lag": 0.47, "speed_gain": 0.88,
+            "ripple": 0.32, "overshoot": 0.80, "noise": 0.44,
+        },
+        "Reward ablation baseline": {
+            "tau": 7.2, "map_err": 3.5, "flow_lag": 0.24, "speed_gain": 1.22,
+            "ripple": 0.72, "overshoot": 1.85, "noise": 0.62,
+        },
+        "Fixed-speed baseline": {
+            "tau": 36.0, "map_err": 8.3, "flow_lag": 0.82, "speed_gain": 0.00,
+            "ripple": 0.10, "overshoot": 0.20, "noise": 0.28,
         },
     }
     rows = []
@@ -248,7 +250,7 @@ def generate_transition_trace() -> pd.DataFrame:
         pump_flow = np.clip(pump_flow, *FLOW_RANGE)
 
         pump_speed = 8.2 + spec["speed_gain"] * adaptive
-        pump_speed += 0.08 * np.sin(2 * np.pi * t / 32.0) * (controller != "Fixed-speed")
+        pump_speed += 0.08 * np.sin(2 * np.pi * t / 32.0) * (controller != "Fixed-speed baseline")
         pump_speed += colored_noise(rng, len(t), 0.035 + spec["ripple"] * 0.025)
         pump_speed = np.clip(pump_speed, *SPEED_RANGE)
 
@@ -350,11 +352,9 @@ def plot_map_response(ax: plt.Axes, trace: pd.DataFrame) -> None:
     ax.set_xlabel("Time (s)")
     ax.set_ylabel("MAP (mmHg)")
     ax.set_title(
-        "MAP regulation during rest-activity-recovery transition",
-        loc="center",
-        fontsize=10,
+        "Target MAP versus actual MAP",
+        loc="left",
         fontweight="bold",
-        pad=16,
     )
     ax.grid(axis="y", color="#E5E7EB", linewidth=0.7)
     ax.grid(axis="x", visible=False)
@@ -477,30 +477,34 @@ def plot_transition_score(ax: plt.Axes, summary: pd.DataFrame) -> None:
 
 def create_figure(summary: pd.DataFrame, trace: pd.DataFrame) -> None:
     set_publication_style()
-    fig, ax = plt.subplots(figsize=(8.2, 3.8), constrained_layout=False)
+    fig, axes = plt.subplots(3, 1, figsize=(8.2, 6.2), sharex=True, constrained_layout=False)
 
-    plot_map_response(ax, trace)
+    plot_map_response(axes[0], trace)
+    plot_flow_response(axes[1], trace)
+    plot_speed_response(axes[2], trace)
+    axes[0].set_xlabel("")
+    axes[1].set_xlabel("")
 
     legend_handles = [Patch(facecolor=PALETTE[label], edgecolor="none", label=label) for label in CONTROLLERS]
     fig.legend(
         handles=legend_handles,
         loc="lower center",
-        ncol=4,
+        ncol=3,
         frameon=False,
-        bbox_to_anchor=(0.5, 0.05),
+        bbox_to_anchor=(0.5, 0.045),
         columnspacing=1.6,
         handlelength=1.4,
     )
     fig.text(
         0.02,
-        0.025,
-        "Green band denotes target MAP range; gray windows denote physiological transition intervals.",
+        0.018,
+        "Dashed lines denote target MAP or target flow; colored lines denote actual controller outputs.",
         ha="left",
         va="bottom",
         fontsize=8,
         color="#64748B",
     )
-    fig.subplots_adjust(left=0.09, right=0.985, top=0.90, bottom=0.25)
+    fig.subplots_adjust(left=0.09, right=0.985, top=0.94, bottom=0.20, hspace=0.28)
 
     for path in [PDF_PATH, SVG_PATH]:
         fig.savefig(path, bbox_inches="tight")

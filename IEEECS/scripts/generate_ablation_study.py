@@ -63,9 +63,11 @@ LOWER_IS_BETTER = {
 
 PALETTE = {
     "Full CNN-Transformer": "#0B8A5A",
-    "w/o CNN": "#D97706",
-    "w/o Transformer": "#CC2936",
-    "MLP/RNN Baseline": "#64748B",
+    "MLP Actor-Critic": "#64748B",
+    "Transformer-only Actor-Critic": "#D97706",
+    "CNN-only Actor-Critic": "#CC2936",
+    "Reward ablation baseline": "#2563EB",
+    "Fixed-speed baseline": "#9333EA",
 }
 VARIANT_ORDER = list(PALETTE.keys())
 
@@ -90,8 +92,19 @@ VARIANTS = [
         },
     ),
     VariantSpec(
-        key="no_cnn",
-        label="w/o CNN",
+        key="mlp_ac",
+        label="MLP Actor-Critic",
+        metrics={
+            "MAP RMSE (mmHg)": (6.8, 0.78),
+            "Flow RMSE (L/min)": (0.68, 0.09),
+            "Unsafe Event Rate (%)": (10.5, 1.35),
+            "Speed Variation (krpm)": (0.20, 0.04),
+            "Return": (61.0, 4.2),
+        },
+    ),
+    VariantSpec(
+        key="transformer_only",
+        label="Transformer-only Actor-Critic",
         metrics={
             "MAP RMSE (mmHg)": (4.9, 0.56),
             "Flow RMSE (L/min)": (0.49, 0.07),
@@ -101,8 +114,8 @@ VARIANTS = [
         },
     ),
     VariantSpec(
-        key="no_transformer",
-        label="w/o Transformer",
+        key="cnn_only",
+        label="CNN-only Actor-Critic",
         metrics={
             "MAP RMSE (mmHg)": (5.6, 0.66),
             "Flow RMSE (L/min)": (0.56, 0.08),
@@ -112,14 +125,25 @@ VARIANTS = [
         },
     ),
     VariantSpec(
-        key="mlp_rnn",
-        label="MLP/RNN Baseline",
+        key="reward_ablation",
+        label="Reward ablation baseline",
         metrics={
-            "MAP RMSE (mmHg)": (6.8, 0.78),
-            "Flow RMSE (L/min)": (0.68, 0.09),
-            "Unsafe Event Rate (%)": (10.5, 1.35),
-            "Speed Variation (krpm)": (0.20, 0.04),
-            "Return": (61.0, 4.2),
+            "MAP RMSE (mmHg)": (4.1, 0.52),
+            "Flow RMSE (L/min)": (0.40, 0.06),
+            "Unsafe Event Rate (%)": (9.2, 1.25),
+            "Speed Variation (krpm)": (0.62, 0.09),
+            "Return": (73.0, 3.7),
+        },
+    ),
+    VariantSpec(
+        key="fixed_speed",
+        label="Fixed-speed baseline",
+        metrics={
+            "MAP RMSE (mmHg)": (8.6, 0.95),
+            "Flow RMSE (L/min)": (0.82, 0.11),
+            "Unsafe Event Rate (%)": (11.8, 1.50),
+            "Speed Variation (krpm)": (0.10, 0.02),
+            "Return": (52.0, 4.5),
         },
     ),
 ]
@@ -229,7 +253,7 @@ def compute_radar_profiles(summary: pd.DataFrame) -> pd.DataFrame:
             "Overall return": score["Return"],
         }
     )
-    return profiles.loc[["Full CNN-Transformer", "w/o CNN", "w/o Transformer"]]
+    return profiles.loc[["Full CNN-Transformer", "Transformer-only Actor-Critic", "CNN-only Actor-Critic", "Reward ablation baseline"]]
 
 
 def set_publication_style() -> None:
@@ -409,37 +433,19 @@ def create_figure(summary: pd.DataFrame, degradation: pd.DataFrame, profiles: pd
     fig.legend(
         handles=legend_handles,
         loc="lower center",
-        ncol=4,
+        ncol=3,
         frameon=False,
         bbox_to_anchor=(0.5, 0.025),
         columnspacing=1.6,
         handlelength=1.4,
     )
     fig.suptitle(
-        "Ablation study of CNN and Transformer modules",
+        "Ablation study of representation modules and safety reward terms",
         x=0.02,
         y=0.985,
         ha="left",
         fontsize=13,
         fontweight="bold",
-    )
-    fig.text(
-        0.02,
-        0.955,
-        "Synthetic pilot data generated from repeated virtual runs; replace the CSV with measured results for final reporting.",
-        ha="left",
-        va="top",
-        fontsize=8.5,
-        color="#475569",
-    )
-    fig.text(
-        0.02,
-        0.015,
-        "Error bars indicate SEM across virtual runs. Error-type metrics are inverted before normalization in panel A.",
-        ha="left",
-        va="bottom",
-        fontsize=8,
-        color="#64748B",
     )
     fig.subplots_adjust(left=0.07, right=0.985, top=0.90, bottom=0.13, wspace=0.42, hspace=0.46)
 
