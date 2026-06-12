@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.5.24)  4 JUN 2026 11:37
+This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.5.24)  11 JUN 2026 20:59
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -14,62 +14,36 @@ Document Class: IEEEtran 2015/08/26 V1.8b by Michael Shell
 \@IEEEtrantmpdimenA=\dimen150
 \@IEEEtrantmpdimenB=\dimen151
 \@IEEEtrantmpdimenC=\dimen152
-\@IEEEtrantmpcountA=\count276
-\@IEEEtrantmpcountB=\count277
-\@IEEEtrantmpcountC=\count278
+\@IEEEtrantmpcountA=\count272
+\@IEEEtrantmpcountB=\count273
+\@IEEEtrantmpcountC=\count274
 \@IEEEtrantmptoksA=\toks17
-LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 503.
-(/Users/bytedance/Library/TinyTeX/texmf-dist/tex/latex/psnfss/ot1ptm.fd
-File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
-)
+LaTeX Font Info:    Trying to load font information for TU+ptm on input line 503.
+LaTeX Font Info:    No file TUptm.fd. on input line 503.
+
+LaTeX Font Warning: Font shape `TU/ptm/m/n' undefined
+(Font)              using `TU/lmr/m/n' instead on input line 503.
+
 -- Using 8.5in x 11in (letter) paper.
--- Using PDF output.
+-- Using DVI output.
 \@IEEEnormalsizeunitybaselineskip=\dimen153
 -- This is a 10 point document.
 LaTeX Encoding Info:    Redeclaring text command \textunderscore (encoding ?) on input line 937.
 \CLASSINFOnormalsizebaselineskip=\dimen154
 \CLASSINFOnormalsizeunitybaselineskip=\dimen155
 \IEEEnormaljot=\dimen156
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <5> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1090.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <5> not available
-(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 1090.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1090.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <7> not available
-(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 1090.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1090.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <8> not available
-(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 1090.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1090.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <9> not available
-(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 1090.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1090.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 1090.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <11> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1090.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <11> not available
-(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 1090.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1090.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 1090.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <17> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1090.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <17> not available
-(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 1090.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <20> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1090.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <20> not available
-(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 1090.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <24> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1090.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <24> not available
-(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 1090.
+
+LaTeX Font Warning: Font shape `TU/ptm/bx/n' undefined
+(Font)              using `TU/ptm/m/n' instead on input line 1090.
+
+
+LaTeX Font Warning: Font shape `TU/ptm/m/it' undefined
+(Font)              using `TU/ptm/m/n' instead on input line 1090.
+
+
+LaTeX Font Warning: Font shape `TU/ptm/bx/it' undefined
+(Font)              using `TU/ptm/bx/n' instead on input line 1090.
+
 \IEEEquantizedlength=\dimen157
 \IEEEquantizedlengthdiff=\dimen158
 \IEEEquantizedtextheightdiff=\dimen159
@@ -82,27 +56,27 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <24> not available
 \IEEEiednormlabelsep=\dimen166
 \IEEEiedmathlabelsep=\dimen167
 \IEEEiedtopsep=\skip49
-\c@section=\count279
-\c@subsection=\count280
-\c@subsubsection=\count281
-\c@paragraph=\count282
-\c@IEEEsubequation=\count283
+\c@section=\count275
+\c@subsection=\count276
+\c@subsubsection=\count277
+\c@paragraph=\count278
+\c@IEEEsubequation=\count279
 \abovecaptionskip=\skip50
 \belowcaptionskip=\skip51
-\c@figure=\count284
-\c@table=\count285
-\@IEEEeqnnumcols=\count286
-\@IEEEeqncolcnt=\count287
-\@IEEEsubeqnnumrollback=\count288
+\c@figure=\count280
+\c@table=\count281
+\@IEEEeqnnumcols=\count282
+\@IEEEeqncolcnt=\count283
+\@IEEEsubeqnnumrollback=\count284
 \@IEEEquantizeheightA=\dimen168
 \@IEEEquantizeheightB=\dimen169
 \@IEEEquantizeheightC=\dimen170
 \@IEEEquantizeprevdepth=\dimen171
-\@IEEEquantizemultiple=\count289
+\@IEEEquantizemultiple=\count285
 \@IEEEquantizeboxA=\box53
 \@IEEEtmpitemindent=\dimen172
 \IEEEPARstartletwidth=\dimen173
-\c@IEEEbiography=\count290
+\c@IEEEbiography=\count286
 \@IEEEtranrubishbin=\box54
 )
 ** ATTENTION: Overriding command lockouts (line 2).
@@ -127,14 +101,14 @@ Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 ) (/Users/bytedance/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2022/04/08 v2.04 operator names
 )
-\inf@bad=\count291
+\inf@bad=\count287
 LaTeX Info: Redefining \frac on input line 233.
-\uproot@=\count292
-\leftroot@=\count293
+\uproot@=\count288
+\leftroot@=\count289
 LaTeX Info: Redefining \overline on input line 398.
 LaTeX Info: Redefining \colon on input line 409.
-\classnum@=\count294
-\DOTSCASE@=\count295
+\classnum@=\count290
+\DOTSCASE@=\count291
 LaTeX Info: Redefining \ldots on input line 495.
 LaTeX Info: Redefining \dots on input line 498.
 LaTeX Info: Redefining \cdots on input line 619.
@@ -147,20 +121,20 @@ LaTeX Info: Redefining \Bigg on input line 724.
 \big@size=\dimen176
 LaTeX Font Info:    Redeclaring font encoding OML on input line 742.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 743.
-\macc@depth=\count296
+\macc@depth=\count292
 LaTeX Info: Redefining \bmod on input line 904.
 LaTeX Info: Redefining \pmod on input line 909.
 LaTeX Info: Redefining \smash on input line 939.
 LaTeX Info: Redefining \relbar on input line 969.
 LaTeX Info: Redefining \Relbar on input line 970.
-\c@MaxMatrixCols=\count297
+\c@MaxMatrixCols=\count293
 \dotsspace@=\muskip17
-\c@parentequation=\count298
-\dspbrk@lvl=\count299
+\c@parentequation=\count294
+\dspbrk@lvl=\count295
 \tag@help=\toks19
-\row@=\count300
-\column@=\count301
-\maxfields@=\count302
+\row@=\count296
+\column@=\count297
+\maxfields@=\count298
 \andhelp@=\toks20
 \eqnshift@=\dimen177
 \alignsep@=\dimen178
@@ -184,6 +158,7 @@ LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 )) (/Users/bytedance/Library/TinyTeX/texmf-dist/tex/latex/algorithms/algorithmic.sty
+Invalid UTF-8 byte or sequence at line 11 replaced by U+FFFD.
 Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
  (/Users/bytedance/Library/TinyTeX/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2024/03/16 v1.1e Standard LaTeX ifthen package (DPC)
@@ -191,10 +166,10 @@ Package: ifthen 2024/03/16 v1.1e Standard LaTeX ifthen package (DPC)
 Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
 \KV@toks@=\toks23
 )
-\c@ALC@unique=\count303
-\c@ALC@line=\count304
-\c@ALC@rem=\count305
-\c@ALC@depth=\count306
+\c@ALC@unique=\count299
+\c@ALC@line=\count300
+\c@ALC@rem=\count301
+\c@ALC@depth=\count302
 \ALC@tlm=\skip55
 \algorithmicindent=\skip56
 ) (/Users/bytedance/Library/TinyTeX/texmf-dist/tex/latex/graphics/graphicx.sty
@@ -206,9 +181,9 @@ Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
 ) (/Users/bytedance/Library/TinyTeX/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
-Package graphics Info: Driver file: pdftex.def on input line 106.
- (/Users/bytedance/Library/TinyTeX/texmf-dist/tex/latex/graphics-def/pdftex.def
-File: pdftex.def 2025/09/29 v1.2d Graphics/color driver for pdftex
+Package graphics Info: Driver file: xetex.def on input line 106.
+ (/Users/bytedance/Library/TinyTeX/texmf-dist/tex/latex/graphics-def/xetex.def
+File: xetex.def 2025/11/01 v5.0p Graphics/color driver for xetex
 ))
 \Gin@req@height=\dimen183
 \Gin@req@width=\dimen184
@@ -219,10 +194,9 @@ Package: xcolor 2024/09/29 v3.02 LaTeX color extensions (UK)
  (/Users/bytedance/Library/TinyTeX/texmf-dist/tex/latex/graphics-cfg/color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
-Package xcolor Info: Driver file: pdftex.def on input line 274.
+Package xcolor Info: Driver file: xetex.def on input line 274.
  (/Users/bytedance/Library/TinyTeX/texmf-dist/tex/latex/graphics/mathcolor.ltx)
 Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1349.
-Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1353.
 Package xcolor Info: Model `RGB' extended on input line 1365.
 Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1367.
 Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1368.
@@ -230,86 +204,270 @@ Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1369.
 Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1370.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1371.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
-) (/Users/bytedance/Library/TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
-File: l3backend-pdftex.def 2026-02-18 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count307
+) (/Users/bytedance/Library/TinyTeX/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip18
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+) (/Users/bytedance/Library/TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-xetex.def
+File: l3backend-xetex.def 2026-02-18 L3 backend support: XeTeX
+\g__graphics_track_int=\count303
+\g__pdfannot_backend_int=\count304
+\g__pdfannot_backend_link_int=\count305
 ) (./conference_101719.aux)
 \openout1 = `conference_101719.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+
+
+LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
+(Font)              using `TU/ptm/bx/n' instead on input line 19.
+
+
+LaTeX Font Warning: Font shape `TU/ptm/b/it' undefined
+(Font)              using `TU/ptm/bx/it' instead on input line 19.
+
+
+LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
+(Font)              using `TU/ptm/bx/n' instead on input line 19.
+
+
+LaTeX Font Warning: Font shape `TU/ptm/b/it' undefined
+(Font)              using `TU/ptm/bx/it' instead on input line 19.
+
+
+LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
+(Font)              using `TU/ptm/bx/n' instead on input line 19.
+
+
+LaTeX Font Warning: Font shape `TU/ptm/b/it' undefined
+(Font)              using `TU/ptm/bx/it' instead on input line 19.
+
+
+LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
+(Font)              using `TU/ptm/bx/n' instead on input line 19.
+
+
+LaTeX Font Warning: Font shape `TU/ptm/b/it' undefined
+(Font)              using `TU/ptm/bx/it' instead on input line 19.
+
+
+LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
+(Font)              using `TU/ptm/bx/n' instead on input line 19.
+
+
+LaTeX Font Warning: Font shape `TU/ptm/b/it' undefined
+(Font)              using `TU/ptm/bx/it' instead on input line 19.
+
+
+LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
+(Font)              using `TU/ptm/bx/n' instead on input line 19.
+
+
+LaTeX Font Warning: Font shape `TU/ptm/b/it' undefined
+(Font)              using `TU/ptm/bx/it' instead on input line 19.
+
+
+LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
+(Font)              using `TU/ptm/bx/n' instead on input line 19.
+
+
+LaTeX Font Warning: Font shape `TU/ptm/b/it' undefined
+(Font)              using `TU/ptm/bx/it' instead on input line 19.
+
+
+LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
+(Font)              using `TU/ptm/bx/n' instead on input line 19.
+
+
+LaTeX Font Warning: Font shape `TU/ptm/b/it' undefined
+(Font)              using `TU/ptm/bx/it' instead on input line 19.
+
+
+LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
+(Font)              using `TU/ptm/bx/n' instead on input line 19.
+
+
+LaTeX Font Warning: Font shape `TU/ptm/b/it' undefined
+(Font)              using `TU/ptm/bx/it' instead on input line 19.
+
+
+LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
+(Font)              using `TU/ptm/bx/n' instead on input line 19.
+
+
+LaTeX Font Warning: Font shape `TU/ptm/b/it' undefined
+(Font)              using `TU/ptm/bx/it' instead on input line 19.
 
 -- Lines per column: 56 (exact).
-(/Users/bytedance/Library/TinyTeX/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
-Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
-Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
- (/Users/bytedance/Library/TinyTeX/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
-File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
-))
-Underfull \hbox (badness 1546) in paragraph at lines 45--46
-\OT1/ptm/m/n/10 speed op-er-a-tion to more ad-vanced phys-i-o-log-i-cal con-trol
- []
+
+LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
+(Font)              using `TU/ptm/bx/n' instead on input line 35.
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
+(Font)              using `TU/ptm/bx/n' instead on input line 39.
 
- [1{/Users/bytedance/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/Users/bytedance/Library/TinyTeX/texmf-dist/fonts/enc/dvips/base/8r.enc}
+
+LaTeX Font Warning: Font shape `TU/ptm/m/sc' undefined
+(Font)              using `TU/ptm/m/n' instead on input line 43.
+
+LaTeX Font Info:    Trying to load font information for U+msa on input line 44.
+(/Users/bytedance/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 44.
+ (/Users/bytedance/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) [1
 
 
 ]
-<figures/cnn-transformer-actor-critic-vad.png, id=10, 1084.05pt x 592.1322pt>
-File: figures/cnn-transformer-actor-critic-vad.png Graphic file (type png)
-<use figures/cnn-transformer-actor-critic-vad.png>
-Package pdftex.def Info: figures/cnn-transformer-actor-critic-vad.png  used on input line 59.
-(pdftex.def)             Requested size: 516.0pt x 271.02696pt.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 71.
- (/Users/bytedance/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Trying to load font information for U+msb on input line 71.
- (/Users/bytedance/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [2] [3 <./figures/cnn-transformer-actor-critic-vad.png (PNG copy)>] [4]
-<figures/mcl_platform.png, id=32, 2055.68pt x 1200.485pt>
-File: figures/mcl_platform.png Graphic file (type png)
-<use figures/mcl_platform.png>
-Package pdftex.def Info: figures/mcl_platform.png  used on input line 196.
-(pdftex.def)             Requested size: 252.0pt x 147.1477pt.
-<figures/training-evaluation-pipeline.pdf, id=34, 256.5585pt x 172.0026pt>
+File: figures/cnn-transformer-actor-critic-vad.png Graphic file (type bmp)
+<figures/cnn-transformer-actor-critic-vad.png>
+ [2] [3]
+
+LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
+(Font)              using `TU/ptm/bx/n' instead on input line 137.
+
+
+LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
+(Font)              using `TU/ptm/bx/n' instead on input line 137.
+
+
+LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
+(Font)              using `TU/ptm/bx/n' instead on input line 137.
+
+[4]
+File: figures/mcl_platform.png Graphic file (type bmp)
+<figures/mcl_platform.png>
+ [5]
 File: figures/training-evaluation-pipeline.pdf Graphic file (type pdf)
 <use figures/training-evaluation-pipeline.pdf>
-Package pdftex.def Info: figures/training-evaluation-pipeline.pdf  used on input line 210.
-(pdftex.def)             Requested size: 252.0pt x 152.18355pt.
- [5 <./figures/mcl_platform.png>]
-<figures/comparative-control-performance-transitions.pdf, id=40, 593.03123pt x 440.78381pt>
+
+
+LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
+(Font)              using `TU/ptm/bx/n' instead on input line 246.
+
+
+LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
+(Font)              using `TU/ptm/bx/n' instead on input line 246.
+
+
+LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
+(Font)              using `TU/ptm/bx/n' instead on input line 246.
+
 File: figures/comparative-control-performance-transitions.pdf Graphic file (type pdf)
 <use figures/comparative-control-performance-transitions.pdf>
-Package pdftex.def Info: figures/comparative-control-performance-transitions.pdf  used on input line 253.
-(pdftex.def)             Requested size: 252.0pt x 187.3071pt.
-<figures/robustness-safety-under-disturbances.pdf, id=41, 593.03123pt x 440.78381pt>
+[6]
+
+LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
+(Font)              using `TU/ptm/bx/n' instead on input line 290.
+
+
+LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
+(Font)              using `TU/ptm/bx/n' instead on input line 290.
+
+
+LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
+(Font)              using `TU/ptm/bx/n' instead on input line 290.
+
+
+LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
+(Font)              using `TU/ptm/bx/n' instead on input line 290.
+
+
+LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
+(Font)              using `TU/ptm/bx/n' instead on input line 290.
+
 File: figures/robustness-safety-under-disturbances.pdf Graphic file (type pdf)
 <use figures/robustness-safety-under-disturbances.pdf>
-Package pdftex.def Info: figures/robustness-safety-under-disturbances.pdf  used on input line 292.
-(pdftex.def)             Requested size: 252.0pt x 187.3071pt.
- [6 <./figures/comparative-control-performance-transitions.pdf> <./figures/training-evaluation-pipeline.pdf>]
-<figures/ablation-performance-loss-heatmap.pdf, id=81, 513.03397pt x 261.81438pt>
+
+LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
+(Font)              using `TU/ptm/bx/n' instead on input line 331.
+
+
+LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
+(Font)              using `TU/ptm/bx/n' instead on input line 331.
+
+
+LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
+(Font)              using `TU/ptm/bx/n' instead on input line 331.
+
+
+LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
+(Font)              using `TU/ptm/bx/n' instead on input line 331.
+
+
+LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
+(Font)              using `TU/ptm/bx/n' instead on input line 331.
+
 File: figures/ablation-performance-loss-heatmap.pdf Graphic file (type pdf)
 <use figures/ablation-performance-loss-heatmap.pdf>
-Package pdftex.def Info: figures/ablation-performance-loss-heatmap.pdf  used on input line 331.
-(pdftex.def)             Requested size: 252.0pt x 128.60176pt.
- [7 <./figures/robustness-safety-under-disturbances.pdf> <./figures/ablation-performance-loss-heatmap.pdf>]
+[7]
+
+LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
+(Font)              using `TU/ptm/bx/n' instead on input line 370.
+
+
+LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
+(Font)              using `TU/ptm/bx/n' instead on input line 370.
+
+
+LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
+(Font)              using `TU/ptm/bx/n' instead on input line 370.
+
+
+LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
+(Font)              using `TU/ptm/bx/n' instead on input line 370.
+
+
+LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
+(Font)              using `TU/ptm/bx/n' instead on input line 370.
+
+
+Underfull \hbox (badness 1721) in paragraph at lines 382--383
+\TU/ptm/m/sc/8 of left ventricular assist devices: A review of the past,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 382--383
+[][][][][][][][][][][][] [] [][][] [] [][][][][][][][][] [] [][][][][][][][][][][][][] [] [][][][][][][][][] [] [][][][] []
+ []
+
+
+Underfull \hbox (badness 1881) in paragraph at lines 392--393
+[]\TU/ptm/m/sc/8 T. Li, W. B. Cui, X. J. Liu, et al., “A physiological
+ []
+
+
+Underfull \hbox (badness 2012) in paragraph at lines 392--393
+\TU/ptm/m/sc/8 control system for pulsatile ventricular assist device us-
+ []
+
+
+Underfull \hbox (badness 2205) in paragraph at lines 396--397
+[]\TU/ptm/m/sc/8 J. Schulman, F. Wolski, P. Dhariwal, A. Radford, and
+ []
+
+
+Underfull \hbox (badness 6641) in paragraph at lines 396--397
+\TU/ptm/m/sc/8 O. Klimov, “Proximal policy optimization algorithms,”
+ []
+
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -326,20 +484,18 @@ Before submitting the final camera ready copy, remember to:
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-04-28>
  ***********
+
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
  ) 
 Here is how much of TeX's memory you used:
- 3962 strings out of 469331
- 64568 string characters out of 5465424
- 489435 words of memory out of 5000000
- 32767 multiletter control sequences out of 15000+600000
- 668039 words of font info for 114 fonts, out of 8000000 for 9000
+ 3929 strings out of 470007
+ 64303 string characters out of 5474345
+ 491398 words of memory out of 5000000
+ 32671 multiletter control sequences out of 15000+600000
+ 632600 words of font info for 70 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 57i,12n,65p,1716b,278s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</Users/bytedance/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></Users/bytedance/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></Users/bytedance/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></Users/bytedance/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></Users/bytedance/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></Users/bytedance/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></Users/bytedance/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></Users/bytedance/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></Users/bytedance/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></Users/bytedance/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/latxfont/line10.pfb></Users/bytedance/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></Users/bytedance/Library/TinyTeX/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></Users/bytedance/Library/TinyTeX/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></Users/bytedance/Library/TinyTeX/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></Users/bytedance/Library/TinyTeX/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on conference_101719.pdf (8 pages, 6280724 bytes).
-PDF statistics:
- 183 PDF objects out of 1000 (max. 8388607)
- 108 compressed objects within 2 object streams
- 0 named destinations out of 1000 (max. 500000)
- 43 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 57i,12n,65p,1716b,282s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
+Output written on conference_101719.xdv (8 pages, 389420 bytes).

@@ -27,3 +27,6 @@ paper/
 
 # 编译命令示例
 PATH=/Users/bytedance/Library/TinyTeX/bin/universal-darwin:$PATH /Users/bytedance/Library/TinyTeX/bin/universal-darwin/latexmk -g -xelatex -interaction=nonstopmode -file-line-error conference_101719.tex
+
+# 注意
+1. python 路径为 /usr/bin/python3
