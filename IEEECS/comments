@@ -1,0 +1,40 @@
+1. The validation of the proposed controller is still limited. This study mainly relies on simulations
+and cyclic loop experiments, but this may not fully represent the individualized cardiovascular
+dynamics of real patients, different ventricular assist devices (VADs), long-term physiological
+changes, or complex pathological conditions. The authors should clearly distinguish which
+results come from simulations and which come from physical simulation loops, and further
+validate the method with more diverse preload/postload conditions, severity of heart failure, and
+ideally using in vivo or clinical data in ideal scenarios.
+
+2. Some key method details are insufficiently described, which limits the reproducibility of the results. The paper should provide precise reward weights, target values for mean arterial
+pressure (MAP), suction threshold, reflux threshold, allowed pump speed range, maximum
+speed change limit, peak power output (PPO) hyperparameters, number of training sets, random
+seed, convergence criteria, and implementation details of offline pre-training. Since the results
+of reinforcement learning are highly sensitive to these parameters, it is recommended to provide
+a complete parameter table or pseudo-code.
+
+3. Statistical analysis needs to be strengthened. Although the paper reports the average values and
+0.95 confidence intervals of MAP RMSE, flow rate RMSE, unsafe rate, recovery time and other
+indicators, it does not clearly state the number of repeated experiments or random seeds used to
+calculate these intervals. Moreover, there is a lack of formal statistical comparisons between the
+proposed method and the baseline controller. Appropriate statistical tests and multiple
+comparison corrections should be added to support the claimed performance improvement.
+
+4. The baseline comparison is not comprehensive enough. The current comparisons mainly include
+fixed-speed control and the weakened versions of the proposed model, such as MLP PPO, only
+CNN PPO, only Transformer PPO, and the reward ablation baseline. These are useful for
+ablation analysis, but they are not sufficient to prove that it is superior to the existing VAD
+control strategies. The authors should include stronger traditional baselines and learning-based
+baselines under the same experimental settings, such as PI control, fuzzy control, Starling-like
+control, model predictive control, DDPG, TD3, or previously reported DRL-based VAD
+controllers.
+
+5. The safety and clinical applicability of the proposed method require further in-depth discussion.
+The definition of "unacceptable rate" should be clarified, including whether it refers to
+inhalation, reflux, backflow, excessive fluctuation in speed, hemolysis risk, or other
+hemodynamic instability. Additionally, the controller uses left ventricular pressure (LVP), mean
+arterial pressure (MAP), pump flow rate, and previous pump speed as input signals, but LVP
+and MAP may require invasive monitoring, and they may not be continuously available in
+actual VAD patients. The authors should discuss how to obtain these signals in the actual
+system, whether sensor-free estimation is needed, and how sensor noise, signal delay, signal
+loss, or measurement drift will affect the safety of the controller.

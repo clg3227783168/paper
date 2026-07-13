@@ -1,0 +1,60 @@
+name zref
+category Package
+revision 79461
+shortdesc A new reference scheme for LaTeX
+longdesc This package offers a means to remove the limitation, of only
+longdesc two properties, that is inherent in the way LaTeX's reference
+longdesc system works. The package implements an extensible referencing
+longdesc system, where properties may be defined and used in the course
+longdesc of a document. It provides an interface for macro programmers
+longdesc to access the new reference scheme and some modules that use
+longdesc it. Modules available are: zref-user, use zref for
+longdesc "traditional" labels and references; zref-abspage, retrieve
+longdesc absolute page numbers (physical pages, as opposed to the
+longdesc 'logical' page number that is normally typeset when a page
+longdesc number is requested; zref-lastpage, provide a zref-label for
+longdesc the last page of the document; zref-nextpage, provide the page
+longdesc number of the next page of the document; zref-totpages, provide
+longdesc the total number of pages in the document; zref-pagelayout,
+longdesc provide the page layout parameters of a each page (which may
+longdesc then be printed at the end of the document); zref-perpage, make
+longdesc a counter reset for each new page; zref-titleref, make section
+longdesc title or caption text available through the reference system;
+longdesc zref-savepos, make positions on a page available; zref-dotfill,
+longdesc controlled dot-filling; zref-env, record the latest
+longdesc environment's name and the line it started on; and zref-xr,
+longdesc provide the facilities of the xr and xr-hyper packages.
+containersize 14484
+containerchecksum d90f2f2a1ab889078332eabdb23aa9c88f3fb079b73a21efb80ccb9f8e7b5a09d08b21b8a9c8473007d7dfd2cea1c4af9acdd5bc3f41ae7a7f2a3aebc1f1a917
+doccontainersize 651768
+doccontainerchecksum 61b5245f97b0d3441062b17bd94221124608d6eee2100447b05648cbcf879adeaaa2c77e859b6ad8221c950eb420c0df0cbbd0be982dec1dfc277b0324069725
+srccontainersize 37516
+srccontainerchecksum 59cf5c324ddd25145afbaf22e2fadfe4e10c9b46726ca186182676214c97769fdf925346ada6745f53d121962804bf4f904b1fd812daa7d836993ee85f4b493f
+runfiles size=37
+ tex/latex/zref/zref-abspage.sty
+ tex/latex/zref/zref-abspos.sty
+ tex/latex/zref/zref-base.sty
+ tex/latex/zref/zref-counter.sty
+ tex/latex/zref/zref-dotfill.sty
+ tex/latex/zref/zref-env.sty
+ tex/latex/zref/zref-hyperref.sty
+ tex/latex/zref/zref-lastpage.sty
+ tex/latex/zref/zref-marks.sty
+ tex/latex/zref/zref-nextpage.sty
+ tex/latex/zref/zref-pageattr.sty
+ tex/latex/zref/zref-pagelayout.sty
+ tex/latex/zref/zref-perpage.sty
+ tex/latex/zref/zref-runs.sty
+ tex/latex/zref/zref-savepos.sty
+ tex/latex/zref/zref-thepage.sty
+ tex/latex/zref/zref-titleref.sty
+ tex/latex/zref/zref-totpages.sty
+ tex/latex/zref/zref-user.sty
+ tex/latex/zref/zref-xr.sty
+ tex/latex/zref/zref.sty
+catalogue-contact-bugs https://github.com/LaTeX-Package-Repositories/zref/issues
+catalogue-contact-repository https://github.com/LaTeX-Package-Repositories/zref
+catalogue-ctan /macros/latex/contrib/zref
+catalogue-license lppl1.3c
+catalogue-topics label-ref tagged-pdf-partially
+catalogue-version 2.37

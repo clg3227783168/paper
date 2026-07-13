@@ -1,0 +1,39 @@
+name libertinus-fonts
+category Package
+revision 72484
+shortdesc The Libertinus font family
+longdesc This is a fork of the Linux Libertine and Linux Biolinum fonts
+longdesc that started as an OpenType math companion of the Libertine
+longdesc font family, but grown as a full fork to address some of the
+longdesc bugs in the fonts. The family consists of: Libertinus Serif:
+longdesc forked from Linux Libertine. Libertinus Sans: forked from Linux
+longdesc Biolinum. Libertinus Mono: forked from Linux Libertine Mono.
+longdesc Libertinus Math: an OpenType math font for use in OpenType
+longdesc math-capable applications like LuaTeX, XeTeX or MS Word 2007+.
+containersize 1795384
+containerchecksum 234dc32fa5b1f1c7a974444b264a1c258b7a12e1658f45146135d3f75ea8e94b4860282da79b5cdeb587c65f12d7476006d8546505c2842c306be72f51ee21df
+doccontainersize 488236
+doccontainerchecksum 77d107e0e6adcadf82b8f07f3753e60066ded292200316639e6185f995bf83090ecd61ea17139d10856041f1e5624d9bba8fc1eb361e75066f6c6f16ad1a7cf8
+runfiles size=936
+ fonts/opentype/public/libertinus-fonts/LibertinusKeyboard-Regular.otf
+ fonts/opentype/public/libertinus-fonts/LibertinusMath-Regular.otf
+ fonts/opentype/public/libertinus-fonts/LibertinusMono-Regular.otf
+ fonts/opentype/public/libertinus-fonts/LibertinusSans-Bold.otf
+ fonts/opentype/public/libertinus-fonts/LibertinusSans-Italic.otf
+ fonts/opentype/public/libertinus-fonts/LibertinusSans-Regular.otf
+ fonts/opentype/public/libertinus-fonts/LibertinusSerif-Bold.otf
+ fonts/opentype/public/libertinus-fonts/LibertinusSerif-BoldItalic.otf
+ fonts/opentype/public/libertinus-fonts/LibertinusSerif-Italic.otf
+ fonts/opentype/public/libertinus-fonts/LibertinusSerif-Regular.otf
+ fonts/opentype/public/libertinus-fonts/LibertinusSerif-Semibold.otf
+ fonts/opentype/public/libertinus-fonts/LibertinusSerif-SemiboldItalic.otf
+ fonts/opentype/public/libertinus-fonts/LibertinusSerifDisplay-Regular.otf
+ fonts/opentype/public/libertinus-fonts/LibertinusSerifInitials-Regular.otf
+catalogue-also libertinus-otf libertinus-type1
+catalogue-contact-announce https://github.com/alerque/libertinus/releases
+catalogue-contact-bugs https://github.com/alerque/libertinus/issues
+catalogue-contact-repository https://github.com/alerque/libertinus
+catalogue-ctan /fonts/libertinus-fonts
+catalogue-license ofl
+catalogue-topics font font-body font-proportional font-mono font-serif font-sans font-multilingual font-maths font-otf
+catalogue-version 7.051

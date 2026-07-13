@@ -1,0 +1,84 @@
+\relax 
+\citation{b1}
+\citation{b2}
+\citation{b3,b2}
+\citation{b4,b5,b6,b7}
+\citation{b8,b9}
+\citation{b10,b11,b12}
+\@writefile{toc}{\contentsline {section}{\numberline {I}Introduction}{1}{}\protected@file@percent }
+\citation{b2}
+\citation{b4,b5,b6,b7}
+\citation{b8}
+\citation{b13}
+\citation{b14}
+\citation{b15}
+\citation{b10,b11,b12}
+\citation{b10,b11}
+\@writefile{toc}{\contentsline {section}{\numberline {II}Related Work}{2}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {III}Methods}{2}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-A}}Problem Formulation}{2}{}\protected@file@percent }
+\citation{b10,b11,b12,b16}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces CNN--Transformer PPO actor-critic framework for physiological VAD control. Multichannel physiological waveforms are encoded by a shared CNN--Transformer representation module, where the CNN extracts local waveform morphology and the Transformer captures long-range temporal dependencies across cardiac cycles. The actor parameterizes a bounded stochastic pump-speed policy, while the critic estimates the state value used by PPO updates under a multi-objective reward that balances perfusion matching, hemodynamic stability, control smoothness, and safety penalties related to suction and regurgitation.}}{3}{}\protected@file@percent }
+\newlabel{fig:cnn_transformer_actor_critic}{{1}{3}{}{figure.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-B}}PPO Actor-Critic Framework}{3}{}\protected@file@percent }
+\newlabel{eq:ppo_clip}{{1}{3}{}{equation.1}{}}
+\newlabel{eq:ppo_value}{{2}{3}{}{equation.2}{}}
+\newlabel{eq:ppo_total}{{3}{3}{}{equation.3}{}}
+\citation{b15}
+\citation{b10,b11,b17,b12}
+\citation{b10,b11,b12}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Model Architecture and Input Configuration}}{4}{}\protected@file@percent }
+\newlabel{tab:model_architecture}{{1}{4}{}{table.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-C}}CNN--Transformer Architecture}{4}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-D}}Reward Design}{4}{}\protected@file@percent }
+\newlabel{eq:total_reward}{{4}{4}{}{equation.4}{}}
+\newlabel{eq:perfusion_reward}{{5}{4}{}{equation.5}{}}
+\newlabel{eq:suction_reward}{{6}{4}{}{equation.6}{}}
+\newlabel{eq:backflow_reward}{{7}{4}{}{equation.7}{}}
+\newlabel{eq:stability_reward}{{8}{4}{}{equation.8}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {IV}Experimental Setup}{5}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-A}}Platform and Physiological Scenarios}{5}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Physical mock circulatory loop platform for ventricular assist device physiological control experiments. The platform includes a pulsatile motor, volume chamber, compliance chamber, damping chamber, flowmeter, and left ventricular chamber to emulate cardiovascular hemodynamic conditions.}}{5}{}\protected@file@percent }
+\newlabel{fig:mcl_platform}{{2}{5}{}{figure.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-B}}Data Collection and Training Procedure}{5}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Diagnostic Baselines and Tested Hypotheses}}{6}{}\protected@file@percent }
+\newlabel{tab:baselines}{{2}{6}{}{table.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Training and evaluation pipeline of the proposed physiological VAD controller. The workflow links physiological scenario construction, signal preprocessing, CNN--Transformer representation pretraining, online PPO actor-critic optimization, and downstream transition, robustness, safety, and ablation analyses.}}{6}{}\protected@file@percent }
+\newlabel{fig:training_evaluation_pipeline}{{3}{6}{}{figure.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-C}}Baseline and Evaluation Protocol}{6}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {V}Results and Discussion}{6}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-A}}Comparative Control Performance}{6}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Comparative control response during a rest-activity-recovery transition. The aligned panels show target MAP versus actual MAP, pump-flow tracking, and pump-speed commands for the proposed CNN--Transformer controller and baseline controllers. The green band denotes the target MAP range, dashed lines denote target MAP or target flow, and shaded windows mark the activity and recovery intervals.}}{6}{}\protected@file@percent }
+\newlabel{fig:comparative_control_performance}{{4}{6}{}{figure.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Quantitative Control Performance Across Physiological Transition Scenarios}}{7}{}\protected@file@percent }
+\newlabel{tab:transition_results}{{3}{7}{}{table.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-B}}Robustness and Safety Analysis}{7}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Control response under composite disturbances. The aligned panels show target MAP versus actual MAP, pump-flow response, and pump-speed commands during sensor noise, preload drop, and afterload rise intervals. The green band denotes the target MAP range, dashed lines denote target MAP or nominal flow, and shaded windows mark disturbance intervals.}}{7}{}\protected@file@percent }
+\newlabel{fig:robustness_safety}{{5}{7}{}{figure.5}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Robustness and Safety Performance Under Composite Disturbance}}{7}{}\protected@file@percent }
+\newlabel{tab:robustness_results}{{4}{7}{}{table.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-C}}Ablation Study and Interpretation}{7}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Ablation study of representation modules and safety reward terms using relative performance loss compared with the full model.}}{7}{}\protected@file@percent }
+\newlabel{fig:ablation_study}{{6}{7}{}{figure.6}{}}
+\bibcite{b1}{1}
+\bibcite{b2}{2}
+\bibcite{b3}{3}
+\bibcite{b4}{4}
+\bibcite{b5}{5}
+\bibcite{b6}{6}
+\bibcite{b7}{7}
+\bibcite{b8}{8}
+\bibcite{b9}{9}
+\bibcite{b10}{10}
+\bibcite{b11}{11}
+\bibcite{b12}{12}
+\bibcite{b13}{13}
+\bibcite{b14}{14}
+\bibcite{b15}{15}
+\bibcite{b16}{16}
+\bibcite{b17}{17}
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Ablation Study of Representation Modules and Safety-Aware Reward Design}}{8}{}\protected@file@percent }
+\newlabel{tab:ablation_results}{{5}{8}{}{table.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {VI}Conclusion}{8}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{References}{8}{}\protected@file@percent }
+\gdef \@abspage@last{8}

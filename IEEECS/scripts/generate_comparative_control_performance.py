@@ -477,13 +477,9 @@ def plot_transition_score(ax: plt.Axes, summary: pd.DataFrame) -> None:
 
 def create_figure(summary: pd.DataFrame, trace: pd.DataFrame) -> None:
     set_publication_style()
-    fig, axes = plt.subplots(3, 1, figsize=(8.2, 6.2), sharex=True, constrained_layout=False)
+    fig, ax = plt.subplots(1, 1, figsize=(8.2, 3.1), constrained_layout=False)
 
-    plot_map_response(axes[0], trace)
-    plot_flow_response(axes[1], trace)
-    plot_speed_response(axes[2], trace)
-    axes[0].set_xlabel("")
-    axes[1].set_xlabel("")
+    plot_map_response(ax, trace)
 
     legend_handles = [Patch(facecolor=PALETTE[label], edgecolor="none", label=label) for label in CONTROLLERS]
     fig.legend(
@@ -491,20 +487,20 @@ def create_figure(summary: pd.DataFrame, trace: pd.DataFrame) -> None:
         loc="lower center",
         ncol=3,
         frameon=False,
-        bbox_to_anchor=(0.5, 0.045),
+        bbox_to_anchor=(0.5, 0.02),
         columnspacing=1.6,
         handlelength=1.4,
     )
     fig.text(
         0.02,
-        0.018,
-        "Dashed lines denote target MAP or target flow; colored lines denote actual controller outputs.",
+        -0.02,
+        "Dashed line denotes target MAP; colored lines denote actual controller outputs.",
         ha="left",
         va="bottom",
         fontsize=8,
         color="#64748B",
     )
-    fig.subplots_adjust(left=0.09, right=0.985, top=0.94, bottom=0.20, hspace=0.28)
+    fig.subplots_adjust(left=0.09, right=0.985, top=0.92, bottom=0.34)
 
     for path in [PDF_PATH, SVG_PATH]:
         fig.savefig(path, bbox_inches="tight")

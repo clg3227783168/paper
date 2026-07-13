@@ -1,0 +1,63 @@
+% THIS FILE WAS AUTOMATICALLY GENERATED -- DO NOT EDIT
+
+%%AutoEnc_tvlhp3cnxqrjtyoq223hxzlbdb
+% Encoding created by otftotfm on Sun Sep 22 11:51:04 2024
+% Command line follows encoding
+/AutoEnc_tvlhp3cnxqrjtyoq223hxzlbdb [
+%00
+  /endash /uni032F /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+  /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+%10
+  /uni0316 /uni0317 /.notdef /.notdef /uni032E /.notdef /.notdef /.notdef
+  /.notdef /.notdef /.notdef /.notdef /quoteleft /quoteright /.notdef /macron
+%20
+  /.notdef /exclam /dieresis /.notdef /.notdef /percent /periodcentered /.notdef
+  /parenleft /parenright /asterisk /plus /comma /hyphen /period /slash
+%30
+  /zero /one /two /three /four /five /six /seven
+  /eight /nine /colon /.notdef /.notdef /equal /.notdef /semicolon
+%40
+  /.notdef /.notdef /.notdef /.notdef /Delta /.notdef /.notdef /.notdef
+  /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+%50
+  /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+  /.notdef /.notdef /.notdef /bracketleft /.notdef /bracketright /.notdef /.notdef
+%60
+  /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+  /.notdef /.notdef /.notdef /.notdef /.notdef /mu /.notdef /.notdef
+%70
+  /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+  /.notdef /.notdef /.notdef /guillemotleft /.notdef /guillemotright /.notdef /emdash
+%80
+  /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+  /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+%90
+  /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+  /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+%A0
+  /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+  /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+%B0
+  /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+  /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+%C0
+  /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+  /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+%D0
+  /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+  /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+%E0
+  /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+  /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+%F0
+  /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+  /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+] def
+% Command line: 'otftotfm --automatic --encoding=fontools_lgr
+% --tfm-directory=texmf/fonts/tfm/public/libertinus-type1
+% --vf-directory=texmf/fonts/vf/public/libertinus-type1
+% --type1-directory=texmf/fonts/type1/public/libertinus-type1
+% --encoding-directory=texmf/fonts/enc/dvips/libertinus-type1
+% --map-file=texmf/fonts/map/dvips/libertinus-type1/LibertinusMono.map
+% --no-updmap --force --coding-scheme=GREEK FONT ENCODING - LGR --x-height=x
+% LibertinusMono-Regular.otf LibertinusMono-Regular-tlf-lgr'

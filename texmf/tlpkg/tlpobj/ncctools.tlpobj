@@ -1,0 +1,57 @@
+name ncctools
+category Package
+revision 51810
+shortdesc A collection of general packages for LaTeX
+longdesc The NCCtools bundle contains many packages for general use
+longdesc under LaTeX; many are also used by NCC LaTeX. The bundle
+longdesc includes tools for: executing commands after a package is
+longdesc loaded; watermarks; counter manipulation (dynamic counters,
+longdesc changing counter numbering with another counter); improvements
+longdesc to the description environment; hyphenation of compound words;
+longdesc new levels of footnotes; space-filling patterns; "poor man's"
+longdesc Black Board Bold symbols; alignment of the content of a box;
+longdesc use comma as decimal separator; boxes with their own crop
+longdesc marks; page cropmarks; improvements to fancy headers; float
+longdesc "styles", mini floats, side floats; manually marked footnotes;
+longdesc extension of amsmath; control of paragraph skip; an envelope to
+longdesc the graphicx package; dashed and multiple rules; alternative
+longdesc techniques for declarations of sections, captions, and
+longdesc toc-entries; generalised text-stretching; generation of new
+longdesc theorem-like environments; control of the text area; centred
+longdesc page layouts; and un-numbered top-level section.
+containersize 24572
+containerchecksum f7ec6f6c51d2a4f071b85cf28299a4a11eeabaf225c85cd0144bb0971ec3da44ee9aeac7cdd7501d258b7e8cf25b3e3484cd60dbadf0ff3ee05767c713c12dfa
+doccontainersize 2446624
+doccontainerchecksum a594e74455024dff7d38a8a750ee02637341f84d342a83409ad0e20a1b0f292c370e16c1b267c2d6a58975f45a6b4c1092c8518653994392cf4dc08fe8553644
+srccontainersize 91436
+srccontainerchecksum 9fd3fccd2383ba6dd9f32766fbabb5a2c108c335eee1b5fd6dd11d93d5d6944bed22877b640ea676bf9721a69e34f0500a3bee131a4bc65feafc348207d131b5
+runfiles size=43
+ tex/latex/ncctools/afterpackage.sty
+ tex/latex/ncctools/dcounter.sty
+ tex/latex/ncctools/desclist.sty
+ tex/latex/ncctools/extdash.sty
+ tex/latex/ncctools/manyfoot.sty
+ tex/latex/ncctools/mboxfill.sty
+ tex/latex/ncctools/nccbbb.sty
+ tex/latex/ncctools/nccboxes.sty
+ tex/latex/ncctools/ncccomma.sty
+ tex/latex/ncctools/ncccropbox.sty
+ tex/latex/ncctools/ncccropmark.sty
+ tex/latex/ncctools/nccfancyhdr.sty
+ tex/latex/ncctools/nccfloats.sty
+ tex/latex/ncctools/nccfoots.sty
+ tex/latex/ncctools/nccmath.sty
+ tex/latex/ncctools/nccparskip.sty
+ tex/latex/ncctools/nccpic.sty
+ tex/latex/ncctools/nccrules.sty
+ tex/latex/ncctools/nccsect.sty
+ tex/latex/ncctools/nccstretch.sty
+ tex/latex/ncctools/nccthm.sty
+ tex/latex/ncctools/textarea.sty
+ tex/latex/ncctools/tocenter.sty
+ tex/latex/ncctools/topsection.sty
+ tex/latex/ncctools/watermark.sty
+catalogue-ctan /macros/latex/contrib/ncctools
+catalogue-license lppl
+catalogue-topics collection
+catalogue-version 3.5.3

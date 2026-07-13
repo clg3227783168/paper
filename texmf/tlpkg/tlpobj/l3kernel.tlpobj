@@ -1,0 +1,49 @@
+name l3kernel
+category Package
+revision 79405
+shortdesc LaTeX3 programming conventions
+longdesc The l3kernel bundle provides an implementation of the LaTeX3
+longdesc programmers' interface, as a set of packages that run under
+longdesc LaTeX2e. The interface provides the foundation on which the
+longdesc LaTeX3 kernel and other future code are built: it is an API for
+longdesc TeX programmers. The packages are set up so that the LaTeX3
+longdesc conventions can be used with regular LaTeX2e packages.
+depend l3backend
+depend lua-uni-algos
+containersize 191416
+containerchecksum 8d5dc5e62bad4db15cce14064276a3aad112711d1f41d715ec4129740e8b36102a6ae23d8211555b951e77d5258b4307dd409c531abb0a8d218f327a8c2d6379
+doccontainersize 12187596
+doccontainerchecksum cefc4b102e6af64e8ce568e08dce5f61383e4fd48c37014d85a443a6d84a5c74cca8568e3eb2511040d603b355145ecf064b2188850b0be6b8095123770851bb
+srccontainersize 656304
+srccontainerchecksum 6b99a94161811b4c28be7300f005b4035c9d0d7cf178c6bd2ebc4ce018a0894bdb7a6a159015c3a0fb594e15e922aacc3c63a6f2886dc66a6874f0cb2051df80
+runfiles size=394
+ tex/latex/l3kernel/expl3-code.tex
+ tex/latex/l3kernel/expl3-generic.tex
+ tex/latex/l3kernel/expl3.ltx
+ tex/latex/l3kernel/expl3.lua
+ tex/latex/l3kernel/expl3.sty
+ tex/latex/l3kernel/l3debug.def
+ tex/latex/l3kernel/l3doc.cls
+ tex/latex/l3kernel/l3docstrip.tex
+ tex/latex/l3kernel/l3str-enc-iso88591.def
+ tex/latex/l3kernel/l3str-enc-iso885910.def
+ tex/latex/l3kernel/l3str-enc-iso885911.def
+ tex/latex/l3kernel/l3str-enc-iso885913.def
+ tex/latex/l3kernel/l3str-enc-iso885914.def
+ tex/latex/l3kernel/l3str-enc-iso885915.def
+ tex/latex/l3kernel/l3str-enc-iso885916.def
+ tex/latex/l3kernel/l3str-enc-iso88592.def
+ tex/latex/l3kernel/l3str-enc-iso88593.def
+ tex/latex/l3kernel/l3str-enc-iso88594.def
+ tex/latex/l3kernel/l3str-enc-iso88595.def
+ tex/latex/l3kernel/l3str-enc-iso88596.def
+ tex/latex/l3kernel/l3str-enc-iso88597.def
+ tex/latex/l3kernel/l3str-enc-iso88598.def
+ tex/latex/l3kernel/l3str-enc-iso88599.def
+catalogue-also l3backend l3packages l3experimental
+catalogue-contact-bugs https://github.com/latex3/latex3/issues
+catalogue-contact-home https://www.latex-project.org
+catalogue-contact-repository https://github.com/latex3/latex3
+catalogue-ctan /macros/latex/required/l3kernel
+catalogue-license lppl1.3c
+catalogue-topics format latex3

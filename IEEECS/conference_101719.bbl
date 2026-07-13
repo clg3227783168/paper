@@ -1,0 +1,168 @@
+%%% -*-BibTeX-*-
+%%% Do NOT edit. File created by BibTeX with style
+%%% ACM-Reference-Format-Journals [18-Jan-2012].
+
+\begin{thebibliography}{15}
+
+%%% ====================================================================
+%%% NOTE TO THE USER: you can override these defaults by providing
+%%% customized versions of any of these macros before the \bibliography
+%%% command.  Each of them MUST provide its own final punctuation,
+%%% except for \shownote{} and \showURL{}.  The latter two
+%%% do not use final punctuation, in order to avoid confusing it with
+%%% the Web address.
+%%%
+%%% To suppress output of a particular field, define its macro to expand
+%%% to an empty string, or better, \unskip, like this:
+%%%
+%%% \newcommand{\showURL}[1]{\unskip}   % LaTeX syntax
+%%%
+%%% \def \showURL #1{\unskip}           % plain TeX syntax
+%%%
+%%% ====================================================================
+
+\ifx \showCODEN    \undefined \def \showCODEN     #1{\unskip}     \fi
+\ifx \showISBNx    \undefined \def \showISBNx     #1{\unskip}     \fi
+\ifx \showISBNxiii \undefined \def \showISBNxiii  #1{\unskip}     \fi
+\ifx \showISSN     \undefined \def \showISSN      #1{\unskip}     \fi
+\ifx \showLCCN     \undefined \def \showLCCN      #1{\unskip}     \fi
+\ifx \shownote     \undefined \def \shownote      #1{#1}          \fi
+\ifx \showarticletitle \undefined \def \showarticletitle #1{#1}   \fi
+\ifx \showURL      \undefined \def \showURL       {\relax}        \fi
+% The following commands are used for tagged output and should be
+% invisible to TeX
+\providecommand\bibfield[2]{#2}
+\providecommand\bibinfo[2]{#2}
+\providecommand\natexlab[1]{#1}
+\providecommand\showeprint[2][]{arXiv:#2}
+
+\bibitem[Azizkhani and Chen(2022)]%
+        {b5}
+\bibfield{author}{\bibinfo{person}{Mohammad Azizkhani} {and} \bibinfo{person}{Yi Chen}.} \bibinfo{year}{2022}\natexlab{}.
+\newblock \showarticletitle{Supervised Adaptive Fuzzy Control of {LVAD} with Pulsatility Ratio Modulation}. In \bibinfo{booktitle}{\emph{Proc. IEEE 18th Int. Conf. Autom. Sci. Eng. (CASE)}}. \bibinfo{address}{Mexico City, Mexico}, \bibinfo{pages}{2429--2434}.
+\newblock
+\href{https://doi.org/10.1109/CASE49997.2022.9926444}{doi:\nolinkurl{10.1109/CASE49997.2022.9926444}}
+
+
+\bibitem[Bakouri(2023)]%
+        {b13}
+\bibfield{author}{\bibinfo{person}{Mohsen Bakouri}.} \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{An Advanced Physiological Control Algorithm for Left Ventricular Assist Devices}.
+\newblock \bibinfo{journal}{\emph{Applied System Innovation}} \bibinfo{volume}{6}, \bibinfo{number}{6} (\bibinfo{year}{2023}), \bibinfo{pages}{97}.
+\newblock
+\href{https://doi.org/10.3390/asi6060097}{doi:\nolinkurl{10.3390/asi6060097}}
+
+
+\bibitem[Bakouri et~al\mbox{.}(2022)]%
+        {b7}
+\bibfield{author}{\bibinfo{person}{Mohsen Bakouri}, \bibinfo{person}{Ahmad Alassaf}, \bibinfo{person}{Khaled Alsharef}, {et~al\mbox{.}}} \bibinfo{year}{2022}\natexlab{}.
+\newblock \showarticletitle{An Optimal H-Infinity Controller for Left Ventricular Assist Devices Based on a Starling-Like Controller: A Simulation Study}.
+\newblock \bibinfo{journal}{\emph{Mathematics}} \bibinfo{volume}{10}, \bibinfo{number}{5} (\bibinfo{year}{2022}), \bibinfo{pages}{731}.
+\newblock
+\href{https://doi.org/10.3390/math10050731}{doi:\nolinkurl{10.3390/math10050731}}
+
+
+\bibitem[Fernandez-Zapico et~al\mbox{.}(2024)]%
+        {b10}
+\bibfield{author}{\bibinfo{person}{Diego Fernandez-Zapico}, \bibinfo{person}{Thijs Peirelinck}, \bibinfo{person}{Geert Deconinck}, {et~al\mbox{.}}} \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{Physiological Control for Left Ventricular Assist Devices Based on Deep Reinforcement Learning}.
+\newblock \bibinfo{journal}{\emph{Artificial Organs}} \bibinfo{volume}{48}, \bibinfo{number}{12} (\bibinfo{year}{2024}), \bibinfo{pages}{1418--1429}.
+\newblock
+\href{https://doi.org/10.1111/aor.14845}{doi:\nolinkurl{10.1111/aor.14845}}
+
+
+\bibitem[Fetanat et~al\mbox{.}(2021)]%
+        {b15}
+\bibfield{author}{\bibinfo{person}{Masoud Fetanat}, \bibinfo{person}{Michael Stevens}, \bibinfo{person}{Christopher Hayward}, {et~al\mbox{.}}} \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{A Sensorless Control System for an Implantable Heart Pump Using a Real-Time Deep Convolutional Neural Network}.
+\newblock \bibinfo{journal}{\emph{IEEE Transactions on Biomedical Engineering}} \bibinfo{volume}{68}, \bibinfo{number}{10} (\bibinfo{year}{2021}), \bibinfo{pages}{3029--3038}.
+\newblock
+\href{https://doi.org/10.1109/TBME.2021.3061405}{doi:\nolinkurl{10.1109/TBME.2021.3061405}}
+
+
+\bibitem[Fujimoto et~al\mbox{.}(2018)]%
+        {b19}
+\bibfield{author}{\bibinfo{person}{Scott Fujimoto}, \bibinfo{person}{Herke van Hoof}, {and} \bibinfo{person}{David Meger}.} \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{Addressing Function Approximation Error in Actor-Critic Methods}. In \bibinfo{booktitle}{\emph{Proc. 35th Int. Conf. Mach. Learn. (ICML)}}. \bibinfo{address}{Stockholm, Sweden}, \bibinfo{pages}{1587--1596}.
+\newblock
+
+
+\bibitem[Gross et~al\mbox{.}(2022)]%
+        {b2}
+\bibfield{author}{\bibinfo{person}{Christoph Gross}, \bibinfo{person}{Libera Fresiello}, {and} \bibinfo{person}{Francesco Moscato}.} \bibinfo{year}{2022}\natexlab{}.
+\newblock \showarticletitle{Physiological Control of Left Ventricular Assist Devices: A Review of the Past, Present, and Future}.
+\newblock \bibinfo{journal}{\emph{IEEE Reviews in Biomedical Engineering}}  \bibinfo{volume}{15} (\bibinfo{year}{2022}), \bibinfo{pages}{187--202}.
+\newblock
+
+
+\bibitem[Haghighi(2021)]%
+        {b8}
+\bibfield{author}{\bibinfo{person}{Farshid~Fadaei Haghighi}.} \bibinfo{year}{2021}\natexlab{}.
+\newblock \emph{\bibinfo{title}{Deep Learning Methods for the Estimation of Preload and Physiological Control of Heart Assist Devices}}.
+\newblock \bibinfo{thesistype}{Ph.\,D. Dissertation}. \bibinfo{school}{University of New South Wales}, \bibinfo{address}{Sydney, Australia}.
+\newblock
+
+
+\bibitem[Li et~al\mbox{.}(2023)]%
+        {b12}
+\bibfield{author}{\bibinfo{person}{Tao Li}, \bibinfo{person}{Wenbo Cui}, \bibinfo{person}{Xiaojing Liu}, {et~al\mbox{.}}} \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{A Physiological Control System for Pulsatile Ventricular Assist Device Using an Energy-Efficient Deep Reinforcement Learning Method}.
+\newblock \bibinfo{journal}{\emph{IEEE Transactions on Instrumentation and Measurement}}  \bibinfo{volume}{72} (\bibinfo{year}{2023}), \bibinfo{pages}{1--10}.
+\newblock
+\href{https://doi.org/10.1109/TIM.2023.3277993}{doi:\nolinkurl{10.1109/TIM.2023.3277993}}
+
+
+\bibitem[Lillicrap et~al\mbox{.}(2016)]%
+        {b18}
+\bibfield{author}{\bibinfo{person}{Timothy~P. Lillicrap}, \bibinfo{person}{Jonathan~J. Hunt}, \bibinfo{person}{Alexander Pritzel}, {et~al\mbox{.}}} \bibinfo{year}{2016}\natexlab{}.
+\newblock \showarticletitle{Continuous Control with Deep Reinforcement Learning}. \bibinfo{howpublished}{\url{https://arxiv.org/abs/1509.02971}}. In \bibinfo{booktitle}{\emph{Proc. Int. Conf. Learn. Represent. (ICLR)}}. \bibinfo{address}{San Juan, Puerto Rico}.
+\newblock
+
+
+\bibitem[Liu et~al\mbox{.}(2025)]%
+        {b6}
+\bibfield{author}{\bibinfo{person}{Hao Liu}, \bibinfo{person}{Ao Guan}, \bibinfo{person}{Feng Xing}, {et~al\mbox{.}}} \bibinfo{year}{2025}\natexlab{}.
+\newblock \showarticletitle{Cardiac Index Adaptive Physiological Control System for Continuous-Flow Left Ventricular Assist Device}.
+\newblock \bibinfo{journal}{\emph{Expert Systems with Applications}}  \bibinfo{volume}{291} (\bibinfo{year}{2025}), \bibinfo{pages}{128536}.
+\newblock
+\href{https://doi.org/10.1016/j.eswa.2025.128536}{doi:\nolinkurl{10.1016/j.eswa.2025.128536}}
+
+
+\bibitem[Maw et~al\mbox{.}(2022)]%
+        {b3}
+\bibfield{author}{\bibinfo{person}{Martin Maw}, \bibinfo{person}{Thomas Schl{\"o}glhofer}, \bibinfo{person}{Christiane Marko}, {et~al\mbox{.}}} \bibinfo{year}{2022}\natexlab{}.
+\newblock \showarticletitle{A Sensorless Modular Multiobjective Control Algorithm for Left Ventricular Assist Devices: A Clinical Pilot Study}.
+\newblock \bibinfo{journal}{\emph{Frontiers in Cardiovascular Medicine}}  \bibinfo{volume}{9} (\bibinfo{year}{2022}), \bibinfo{pages}{888269}.
+\newblock
+\href{https://doi.org/10.3389/fcvm.2022.888269}{doi:\nolinkurl{10.3389/fcvm.2022.888269}}
+
+
+\bibitem[Nishikawa et~al\mbox{.}(2024)]%
+        {b4}
+\bibfield{author}{\bibinfo{person}{Takao Nishikawa} {et~al\mbox{.}}} \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{Automated Control of Impella Maintains Optimal Left Ventricular Unloading During Periods of Unstable Hemodynamics and Prevents Myocardial Damage in Acute Myocardial Infarction}.
+\newblock \bibinfo{journal}{\emph{International Journal of Cardiology}}  \bibinfo{volume}{410} (\bibinfo{year}{2024}), \bibinfo{pages}{132244}.
+\newblock
+\href{https://doi.org/10.1016/j.ijcard.2024.132244}{doi:\nolinkurl{10.1016/j.ijcard.2024.132244}}
+
+
+\bibitem[Schulman et~al\mbox{.}(2017)]%
+        {b16}
+\bibfield{author}{\bibinfo{person}{John Schulman}, \bibinfo{person}{Filip Wolski}, \bibinfo{person}{Prafulla Dhariwal}, \bibinfo{person}{Alec Radford}, {and} \bibinfo{person}{Oleg Klimov}.} \bibinfo{year}{2017}\natexlab{}.
+\newblock \bibinfo{title}{Proximal Policy Optimization Algorithms}.
+\newblock \bibinfo{howpublished}{\url{https://arxiv.org/abs/1707.06347}}.
+\newblock
+\shownote{arXiv:1707.06347}.
+\newblock
+
+
+\bibitem[Shi et~al\mbox{.}(2025)]%
+        {b11}
+\bibfield{author}{\bibinfo{person}{Yuanyuan Shi}, \bibinfo{person}{Zhikun Xu}, \bibinfo{person}{Chuanhui Chen}, {et~al\mbox{.}}} \bibinfo{year}{2025}\natexlab{}.
+\newblock \showarticletitle{Enhancing Cardiac Hemodynamic and Pulsatility in Heart Failure via Deep Reinforcement Learning: An In-Silico and In-Vitro Validation Study of Percutaneous Ventricular Assist Devices}.
+\newblock \bibinfo{journal}{\emph{Computer Methods and Programs in Biomedicine}}  \bibinfo{volume}{270} (\bibinfo{year}{2025}), \bibinfo{pages}{108975}.
+\newblock
+\href{https://doi.org/10.1016/j.cmpb.2025.108975}{doi:\nolinkurl{10.1016/j.cmpb.2025.108975}}
+
+
+\end{thebibliography}
