@@ -1,10 +1,10 @@
 # Fdb version 4
-["xdvipdfmx"] 1781182743.11719 "conference_101719.xdv" "conference_101719.pdf" "conference_101719" 1781182746.07589 0
-  "conference_101719.xdv" 1781182743.08929 389420 7f2abc41aa2e440316cac9b8709dd773 "xelatex"
+["xdvipdfmx"] 1783065831.24992 "conference_101719.xdv" "conference_101719.pdf" "conference_101719" 1783065834.16318 0
+  "conference_101719.xdv" 1783065831.21847 620108 8724f0ca814b2c60f1abb99ce08a3e36 "xelatex"
   (generated)
   "conference_101719.pdf"
   (rewritten before read)
-["xelatex"] 1781182742.8888 "conference_101719.tex" "conference_101719.xdv" "conference_101719" 1781182746.0755 0
+["xelatex"] 1783065830.9412 "conference_101719.tex" "conference_101719.xdv" "conference_101719" 1783065834.16274 0
   "/Users/bytedance/Library/TinyTeX/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/Users/bytedance/Library/TinyTeX/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
   "/Users/bytedance/Library/TinyTeX/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1246382020 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -47,13 +47,13 @@
   "/Users/bytedance/Library/TinyTeX/texmf-var/web2c/xetex/xelatex.fmt" 1779597416 4433235 7b45c013c48bdfdcf7c2997c9ccba832 ""
   "/Users/bytedance/Library/TinyTeX/texmf.cnf" 1779597376 637 edd806fb06a89761a6034e1968af9017 ""
   "IEEEtran.cls" 1780543221.02891 288304 b67b6fc6c2abb39f9b461923f5199343 ""
-  "conference_101719.aux" 1781182743.08603 7193 c7140085c52438fd1b5df7cd05ddc2ae "xelatex"
-  "conference_101719.tex" 1781182735.05444 45665 af493489f20bb9f75716e6d3408961c8 ""
-  "figures/ablation-performance-loss-heatmap.pdf" 1780283197.35427 42777 e8774b23feeac068280d14422a9577ba ""
+  "conference_101719.aux" 1783065831.2073 8646 30b913124dc30e66a98ee9f8f15c1c81 "xelatex"
+  "conference_101719.tex" 1783065797.87809 73096 f98f6c2f44284937be670876e1ff3f4d ""
   "figures/cnn-transformer-actor-critic-vad.png" 1780541988.85777 877313 3286c93c327e04384652c2c8be99adaf ""
-  "figures/comparative-control-performance-transitions.pdf" 1780299576.0499 79368 2b629bb684734f34a17c74eb0a0400bb ""
+  "figures/comparative-control-performance-transitions.pdf" 1783062961.08217 51650 16111bf82a2685c4b0dd9ab88917d27d ""
+  "figures/generalization-sweep-preload-afterload-severity.pdf" 1783062959.46732 46682 ce25a1460e4a6fd8c9c25ac7b65b4541 ""
   "figures/mcl_platform.png" 1780055619.36343 4230334 2145264d3038d59590ce8a0a29df6846 ""
-  "figures/robustness-safety-under-disturbances.pdf" 1780299492.37562 74702 1a2fb066497110fe0cf21f9b2b4b58cc ""
+  "figures/robustness-safety-under-disturbances.pdf" 1783062962.67415 52194 e6f8332abb566acad67412304c2d28a8 ""
   "figures/training-evaluation-pipeline.pdf" 1780298434.59317 12748 cdf969d07675abadf95e2b0958241cde ""
   (generated)
   "conference_101719.aux"

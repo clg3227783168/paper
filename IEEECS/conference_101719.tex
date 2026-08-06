@@ -1,12 +1,20 @@
-\documentclass[sigconf,nonacm]{acmart}
+\documentclass[sigconf]{acmart}
 
 \usepackage{graphicx}
 
-\settopmatter{printacmref=false}
-\renewcommand\footnotetextcopyrightpermission[1]{}
+%% Rights management information. These are SAMPLE/placeholder values;
+%% replace them with the values ACM sends after the rights form is
+%% completed for the camera-ready version.
+\setcopyright{acmlicensed}
+\copyrightyear{2026}
+\acmYear{2026}
+\acmDOI{XXXXXXX.XXXXXXX}
 
-% Tighten figure caption spacing (default acmart gap is large)
-\captionsetup[figure]{skip=4pt}
+%% ICBBS 2026 proceedings information (published by ACM).
+\acmConference[ICBBS 2026]{2026 15th International Conference on
+  Bioinformatics and Biomedical Science}{October 16--18,
+  2026}{Seoul, South Korea}
+\acmISBN{978-1-4503-XXXX-X/26/10}
 
 \begin{document}
 
@@ -18,7 +26,6 @@
 \affiliation{%
   \institution{University of Science and Technology of China}
   \city{Hefei}
-  \postcode{230026}
   \country{China}
 }
 
@@ -28,6 +35,37 @@
 Ventricular assist devices are important therapies for end-stage heart failure, but constant-speed operation cannot match changing physiological demand and may raise the risk of suction, regurgitation, and inadequate perfusion. This paper presents a deep reinforcement learning-based physiological control method for ventricular assist devices. The controller adopts a proximal policy optimization (PPO) actor-critic framework with a hybrid CNN--Transformer module, where the CNN extracts local waveform morphology and the Transformer captures long-range temporal dependencies across cardiac cycles. A multi-objective reward jointly encourages perfusion matching, hemodynamic stability, smooth pump-speed regulation, and safety constraint satisfaction. The method is evaluated through a staged pipeline of mock circulatory loop scenarios, offline pretraining, PPO online learning, comparative transition tests, robustness analysis, and architectural ablation. Results indicate that the framework improves physiological adaptability, disturbance tolerance, and safety-aware pump-speed regulation over conventional and weaker learning-based baselines.
 \end{abstract}
 
+%% CCS concepts, generated from https://dl.acm.org/ccs.cfm and required
+%% by ACM for all articles over two pages in length.
+\begin{CCSXML}
+<ccs2012>
+ <concept>
+  <concept_id>10010147.10010257.10010293.10010294</concept_id>
+  <concept_desc>Computing methodologies~Neural networks</concept_desc>
+  <concept_significance>500</concept_significance>
+ </concept>
+ <concept>
+  <concept_id>10010147.10010257.10010293.10010319</concept_id>
+  <concept_desc>Computing methodologies~Reinforcement learning</concept_desc>
+  <concept_significance>500</concept_significance>
+ </concept>
+ <concept>
+  <concept_id>10010147.10010371.10010382.10010383</concept_id>
+  <concept_desc>Applied computing~Health informatics</concept_desc>
+  <concept_significance>300</concept_significance>
+ </concept>
+ <concept>
+  <concept_id>10010583.10010584.10010587</concept_id>
+  <concept_desc>Hardware~Biology-related information processing</concept_desc>
+  <concept_significance>100</concept_significance>
+ </concept>
+</ccs2012>
+\end{CCSXML}
+
+\ccsdesc[500]{Computing methodologies~Reinforcement learning}
+\ccsdesc[500]{Computing methodologies~Neural networks}
+\ccsdesc[300]{Applied computing~Health informatics}
+
 \keywords{ventricular assist device, physiological control, proximal policy optimization, actor-critic, CNN--Transformer, hemodynamic regulation}
 
 \maketitle
@@ -35,24 +73,25 @@ Ventricular assist devices are important therapies for end-stage heart failure, 
 \section{Introduction}
 Heart failure remains a major global health challenge, and an aging population keeps increasing the number of end-stage patients. Ventricular assist devices (VADs) provide mechanical circulatory support when the native heart cannot maintain sufficient perfusion \cite{b2}. Yet most deployed VADs run at constant pump speed: although simple and reliable, this cannot match the patient's changing demand across rest, exercise, and recovery \cite{b3,b2}, and may cause insufficient perfusion and adverse events such as suction and regurgitation.
 
-To improve physiological adaptability, many closed-loop strategies have been explored, including pressure-based feedback, fuzzy, and Starling-like control \cite{b4,b5,b6,b7}. But because the cardiovascular system is highly nonlinear, time-varying, and patient-specific, such model- or rule-based controllers often struggle under complex disturbances and with the multi-objective nature of VAD control, which must simultaneously satisfy perfusion demand, maintain stability, and avoid complications. Deep reinforcement learning (DRL) is attractive here because it learns control policies directly from data without an accurate explicit model \cite{b8,b10,b11,b12}. Yet existing DRL controllers often rely on multilayer perceptrons or recurrent architectures that poorly capture local waveform patterns and long-range temporal dependencies jointly, and adopt narrow reward objectives that miss safety-critical requirements. A framework combining stronger state representation with a more comprehensive reward design is thus still needed.
+To improve physiological adaptability, many closed-loop strategies have been explored, including pressure-based feedback, fuzzy, and Starling-like control \cite{b4,b5,b6,b7}. But because the cardiovascular system is highly nonlinear, time-varying, and patient-specific, such model- or rule-based controllers often struggle under complex disturbances and with the multi-objective nature of VAD control, which must jointly satisfy perfusion demand, maintain stability, and avoid complications. Deep reinforcement learning (DRL) is attractive here because it learns control policies directly from data without an accurate explicit model \cite{b8,b10,b11,b12}. Yet existing DRL controllers often rely on multilayer perceptrons or recurrent architectures that poorly capture local waveform patterns and long-range dependencies jointly, and adopt narrow rewards that miss safety-critical requirements. A framework combining stronger state representation with a more comprehensive reward is thus still needed.
 
 To address this, this paper proposes a DRL-based physiological control method for VADs. It adopts a PPO actor-critic framework with a hybrid CNN--Transformer architecture, where the CNN extracts local features from pressure and flow signals and the Transformer models long-range temporal dependencies across cardiac cycles, together with a multi-objective reward encouraging perfusion while reducing suction, regurgitation, and unstable pump-speed behavior. The main contributions are threefold: 1) a CNN--Transformer PPO architecture for hemodynamic state perception from sequential signals; 2) a reward design integrating perfusion regulation, control smoothness, and unsafe-state avoidance; and 3) a staged evaluation pipeline covering transition tracking, disturbance robustness, safety, and architectural ablation.
 
 \section{Related Work}
 VAD control has evolved from constant-speed operation to physiological control \cite{b2}. Conventional closed-loop methods---pressure-based feedback, proportional-integral regulation, fuzzy, and Starling-like control---improve pump response under specific conditions \cite{b4,b5,b6,b7}, but depend on simplified models, hand-picked indicators, or extensive tuning and optimize few variables, so they degrade under nonlinear, time-varying, patient-specific dynamics with multiple safety and perfusion objectives.
 
-Learning-based methods have since improved state perception and decision making for VAD regulation. Recurrent networks classify physiological states, aiding signal interpretation but staying closer to recognition than closed-loop control \cite{b8}. Others embed neural networks in existing controllers to compensate uncertainties; Bakouri combined pole-placement and sliding-mode control with a fully connected network \cite{b13}, though sliding-mode regulation can chatter and such networks poorly capture waveform morphology. Convolutional networks have also enabled sensorless preload estimation from pump-flow waveforms \cite{b15}. Most of these works, however, target diagnosis, estimation, or auxiliary modeling rather than learning an adaptive control policy.
+Learning-based methods have since improved state perception and decision making for VAD regulation. Recurrent networks classify physiological states, aiding signal interpretation but staying closer to recognition than closed-loop control \cite{b8}. Others embed neural networks in existing controllers to compensate uncertainties; Bakouri combined pole-placement and sliding-mode control with a fully connected network \cite{b13}, though sliding-mode regulation can chatter and such networks poorly capture waveform morphology. Convolutional networks have also enabled sensorless preload estimation from pump-flow waveforms \cite{b15}. Most of these works, however, target diagnosis, estimation, or auxiliary modeling rather than an adaptive control policy.
 
 Deep reinforcement learning offers a data-driven framework for continuous decision making, and PPO, DDPG, and TD3 studies show pump speed can be regulated adaptively \cite{b10,b11,b12}. Yet their actor and critic often use multilayer perceptrons or recurrent modules that cannot jointly capture local waveform variations and long-range temporal dependencies \cite{b10,b11}, and some reward designs cover only a narrow subset of objectives. This work targets both gaps by combining a CNN--Transformer architecture with a PPO actor-critic framework and a multi-objective reward integrating perfusion demand with safety constraints.
 
 \section{Methods}
-The proposed framework casts VAD regulation as a sequential decision-making problem, combining a PPO actor-critic strategy with a CNN--Transformer state representation and a multi-objective reward, as shown in Fig.~\ref{fig:cnn_transformer_actor_critic}. At each control step the controller maps a state vector of measured or estimated physiological signals (pressure- and flow-related waveforms and their recent evolution) to a continuous pump-speed command, aiming to maintain perfusion under changing demand while preserving hemodynamic stability and reducing adverse events. The cardiovascular state is the RL environment state, the pump-speed adjustment is the action, and control quality is the reward; as the dynamics are nonlinear and patient-specific, the policy learns from sequential interactions rather than a fixed analytical model, unifying rest-to-exercise and other time-varying transitions.
+The proposed framework casts VAD regulation as a sequential decision-making problem, combining a PPO actor-critic strategy with a CNN--Transformer state representation and a multi-objective reward, as shown in Fig.~\ref{fig:cnn_transformer_actor_critic}. At each control step the controller maps a state vector of measured or estimated physiological signals (pressure- and flow-related waveforms and their recent evolution) to a continuous pump-speed command, maintaining perfusion under changing demand while preserving hemodynamic stability and reducing adverse events. The cardiovascular state, pump-speed adjustment, and control quality act as the RL state, action, and reward; as the dynamics are nonlinear and patient-specific, the policy learns from sequential interactions rather than a fixed analytical model, unifying rest-to-exercise and other time-varying transitions.
 
 \begin{figure}[!t]
 \centering
-\includegraphics[width=0.82\linewidth]{figures/cnn-transformer-actor-critic-vad.png}
+\includegraphics[width=0.55\linewidth]{figures/cnn-transformer-actor-critic-vad.png}
 \caption{CNN--Transformer PPO actor-critic framework for VAD control. A shared CNN--Transformer module encodes multichannel waveforms; the actor outputs a bounded pump-speed policy and the critic estimates the state value under the multi-objective reward.}
+\Description{Block diagram of the control framework. Four-channel physiological waveforms enter a shared encoder composed of a one-dimensional CNN followed by a Transformer encoder. The encoded representation feeds two heads: an actor that outputs a bounded Gaussian pump-speed policy and a critic that outputs a scalar state value, both trained by PPO under the multi-objective reward.}
 \label{fig:cnn_transformer_actor_critic}
 \end{figure}
 
@@ -90,28 +129,27 @@ R_{\mathrm{perf}} =
 \end{equation}
 where $\sigma$ controls the tolerated MAP deviation. Reward is maximal at $\mathrm{MAP}_{\mathrm{actual}}=\mathrm{MAP}_{\mathrm{target}}$ and decays smoothly toward zero as deviation grows, avoiding the unbounded scale of a negative exponential penalty. The three safety terms are simple penalties: a fixed suction penalty $R_{\mathrm{suction}}=-C_{\mathrm{suction}}$ when the minimum LVP falls below threshold ($\mathrm{LVP}_{\min}<P_{\mathrm{suction}}$) and $0$ otherwise; a backflow penalty $R_{\mathrm{backflow}}=-C_{\mathrm{backflow}}\max(0,-Q_{\mathrm{pump}})/Q_{\mathrm{ref}}$ proportional to reverse pump flow normalized by a reference flow $Q_{\mathrm{ref}}$; and a smoothness term $R_{\mathrm{stab}}=-|\omega_t-\omega_{t-1}|/\Delta\omega_{\max}$ penalizing speed changes relative to the per-step limit $\Delta\omega_{\max}$. All thresholds and constants are listed in Table~\ref{tab:hyperparameters}.
 
-The components are normalized to comparable ranges before weighting, following a safety-prioritized principle: high $w_{\mathrm{suction}}$ and $w_{\mathrm{backflow}}$ discourage unsafe states, $w_{\mathrm{perf}}$ keeps MAP tracking primary, and a smaller nonzero $w_{\mathrm{stab}}$ suppresses unnecessary speed oscillations without preventing timely adaptation. Weights are selected by sensitivity analysis on validation scenarios to preserve safety while minimizing MAP and flow tracking errors, giving $w_{\mathrm{perf}}=1.0$, $w_{\mathrm{suction}}=2.0$, $w_{\mathrm{backflow}}=1.5$, $w_{\mathrm{stab}}=0.3$, with $\mathrm{MAP}_{\mathrm{target}}=80$~mmHg, $\sigma=8$~mmHg, and $C_{\mathrm{suction}}=C_{\mathrm{backflow}}=1.0$.
+The components are normalized to comparable ranges before weighting, following a safety-prioritized principle: high $w_{\mathrm{suction}}$ and $w_{\mathrm{backflow}}$ discourage unsafe states, $w_{\mathrm{perf}}$ keeps MAP tracking primary, and a smaller nonzero $w_{\mathrm{stab}}$ suppresses unnecessary speed oscillations without preventing timely adaptation. Weights are selected by sensitivity analysis on validation scenarios to preserve safety while minimizing MAP and flow tracking errors; the resulting values are listed in Table~\ref{tab:hyperparameters}.
 
 \section{Experimental Setup}
 \subsection{Platform and Physiological Scenarios}
-The setup combines a controllable simulation environment and a physical mock circulatory loop with distinct roles: the simulation is a flexible testbed for large-scale policy interaction and a broad generalization sweep, whereas the physical loop offers more realistic conditions with flow inertia, sensor noise, and physical disturbances. To fix provenance, the transition comparison, robustness analysis (Table~\ref{tab:robustness_results}), and ablation (Table~\ref{tab:ablation_results}) are obtained on the physical loop, whereas offline pretraining, PPO online learning, and the generalization sweep (Fig.~\ref{fig:generalization_sweep}) use the simulation. Adjusting resistance, compliance, and preload spans heart-failure severities, rest-activity demand changes, and rapid transients, the sweep reaching far more states than the physical loop can reproduce.
+The setup combines a controllable simulation environment and a physical mock circulatory loop with distinct roles: the simulation is a flexible testbed for large-scale policy interaction and a broad generalization sweep, whereas the physical loop offers more realistic conditions with flow inertia, sensor noise, and physical disturbances. To fix provenance, the transition comparison, robustness analysis (Table~\ref{tab:robustness_results}), and ablation (Table~\ref{tab:ablation_results}) use the physical loop, whereas offline pretraining, PPO online learning, and the generalization sweep (Fig.~\ref{fig:generalization_sweep}) use the simulation. Adjusting resistance, compliance, and preload spans heart-failure severities, rest-activity demand changes, and rapid transients, reaching far more states than the physical loop can reproduce.
 
-The physical loop (Fig.~\ref{fig:mcl_platform}) emulates ventricular pumping, vascular compliance, pressure buffering, and flow measurement in a controllable in-vitro environment.
+The physical loop (Fig.~\ref{fig:mcl_platform}) emulates ventricular pumping, vascular compliance, pressure buffering, and flow measurement in vitro.
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=\linewidth]{figures/mcl_platform.png}
+\includegraphics[width=0.72\linewidth]{figures/mcl_platform.png}
 \caption{Physical mock circulatory loop platform for VAD physiological control experiments.}
+\Description{Photograph of the in-vitro mock circulatory loop test bench, showing the ventricular pump chamber, compliance and reservoir elements emulating vascular compliance and pressure buffering, connecting tubing, and inline pressure and flow sensors used to measure hemodynamic signals during VAD control experiments.}
 \label{fig:mcl_platform}
 \end{figure}
 
 \subsection{Data Collection and Training Procedure}
 \label{sec:data_training}
-The training pipeline is staged for efficiency and stability. First, representative physiological data collected under multiple operating conditions initialize the CNN--Transformer module before policy optimization, easing representation learning from random exploration alone. This offline stage assembles overlapping four-channel windows (LVP, MAP, pump flow, previous speed) and pretrains the shared encoder self-supervised by masking and reconstructing the windows and predicting the next-step waveform; the weights initialize both actor and critic streams, while the MLP heads start randomly.
+The training pipeline is staged for efficiency and stability. First, representative physiological data collected under multiple operating conditions initialize the CNN--Transformer module before policy optimization, easing representation learning. This offline stage assembles overlapping four-channel windows (LVP, MAP, pump flow, previous speed) and pretrains the shared encoder self-supervised by masking and reconstructing the windows and predicting the next-step waveform; the weights initialize both actor and critic streams, while the MLP heads start randomly.
 
-Second, the controller is optimized by PPO online reinforcement learning in simulation, which supports the many rollouts needed for stable on-policy learning (settings in Table~\ref{tab:hyperparameters}). Training is considered converged when the moving-average episodic return over the last 50 evaluations changes by less than 1\% with no improvement for 20 consecutive evaluations. Statistics use 12 independent runs with seeds from a fixed base seed. Each trained policy is then transferred to the physical loop and evaluated under an identical protocol, so every physical-loop metric is summarized over the same 12 matched runs.
-
-Table~\ref{tab:hyperparameters} lists all physiological, safety, reward, actuator, and training settings, fixed across studies unless a study explicitly perturbs a parameter.
+Second, the controller is optimized by PPO online reinforcement learning in simulation, which supports the many rollouts needed for stable on-policy learning (settings in Table~\ref{tab:hyperparameters}, fixed across studies unless a study explicitly perturbs a parameter). Training is considered converged when the moving-average episodic return over the last 50 evaluations changes by less than 1\% with no improvement for 20 consecutive evaluations. Statistics use 12 independent runs with seeds from a fixed base seed. Each trained policy is then transferred to the physical loop and evaluated under an identical protocol, so every physical-loop metric is summarized over the same 12 matched runs.
 
 \begin{table}[!b]
 \caption{Physiological, Safety, Reward, and Optimization Hyperparameters}
@@ -135,20 +173,20 @@ Protocol & convergence $<1\%$ return change (20-eval patience); 12 runs; base se
 \end{table}
 
 \subsection{Baseline and Evaluation Protocol}
-The method is evaluated against two baseline groups. The diagnostic baselines each remove one capability of the full controller: fixed-speed (no feedback adaptation), MLP PPO (no temporal encoding), Transformer-only PPO (no local CNN morphology), CNN-only PPO (no long-range attention), and reward-ablation (no safety reward terms). The external baselines represent established VAD strategies: four traditional controllers---proportional-integral (PI), fuzzy, Starling-like, and model predictive control (MPC)---and three learning-based controllers---DDPG \cite{b18}, TD3 \cite{b19}, and a reported DRL-based VAD controller with a multilayer-perceptron actor-critic \cite{b10,b11,b12}. All external baselines are tuned in simulation and evaluated on the physical loop under the identical protocol, so differences reflect the control policy rather than the operating conditions.
+The method is evaluated against two baseline groups. The diagnostic baselines each remove one capability of the full controller: fixed-speed (no feedback adaptation), MLP PPO (no temporal encoding), Transformer-only PPO (no local CNN morphology), CNN-only PPO (no long-range attention), and reward-ablation (no safety reward terms). The external baselines represent established VAD strategies: four traditional controllers---proportional-integral (PI), fuzzy, Starling-like, and model predictive control (MPC)---and three learning-based controllers---DDPG \cite{b18}, TD3 \cite{b19}, and a reported DRL-based VAD controller with a multilayer-perceptron actor-critic \cite{b10,b11,b12}. All external baselines are tuned in simulation and evaluated on the physical loop under the identical protocol, so differences reflect the control policy rather than operating conditions.
 
 Evaluation criteria cover MAP regulation, flow tracking, speed smoothness, and safety. The unsafe-event rate is the fraction of control steps violating at least one safety constraint: (i) \emph{ventricular suction} ($\mathrm{LVP}_{\min}<P_{\mathrm{suction}}$); (ii) \emph{reflux/backflow} ($Q_{\mathrm{pump}}<0$); and (iii) \emph{excessive speed fluctuation} ($|\omega_t-\omega_{t-1}|>\Delta\omega_{\max}$); thresholds are in Table~\ref{tab:hyperparameters}. Hemolysis risk is addressed indirectly, as suction avoidance, backflow prevention, and smooth speed changes reduce the high-shear and flow-reversal conditions most linked to blood trauma.
 
-All metrics are computed over the 12 matched runs of Section~\ref{sec:data_training} as mean $\pm$ 95\% CI. Each baseline is compared by a two-sided paired $t$-test with $p$-values Holm--Bonferroni-adjusted within each table; the Wilcoxon signed-rank test gives the same decisions, and the paired Cohen's $d_z$ reports effect size. Comparisons significant at a Holm-adjusted $0.05$ level are marked in the tables.
+All metrics are computed over the 12 matched runs of Section~\ref{sec:data_training} as mean $\pm$ 95\% CI. Each baseline is compared by a two-sided paired $t$-test with $p$-values Holm--Bonferroni-adjusted within each table; the Wilcoxon signed-rank test gives the same decisions, and the paired Cohen's $d_z$ reports effect size.
 
 \section{Results and Discussion}
 
 \subsection{Comparative Performance and Ablation}
 The diagnostic baselines are assessed in two complementary settings: a rest-activity-recovery transition testing dynamic MAP tracking under changing hemodynamic demand, and a component ablation isolating each module's contribution (Table~\ref{tab:ablation_results}).
 
-In the transition the proposed CNN--Transformer PPO controller keeps MAP within or close to the target band, reducing transient under-support after increased demand and avoiding overshoot on return to rest, whereas the fixed-speed baseline and weakened PPO variants deviate more. It attains the lowest MAP RMSE ($3.04$~mmHg), flow RMSE ($0.26$~L/min), and settling time ($6.1$~s versus $9$--$22$~s for the baselines), significantly better than every baseline (Holm-adjusted $p<0.001$) with large effect sizes (Cohen's $d_z$ from $2.1$ to $8.7$).
+In the transition the proposed CNN--Transformer PPO controller keeps MAP within or close to the target band, reducing transient under-support after increased demand and avoiding overshoot on return to rest, whereas the fixed-speed baseline and weakened PPO variants deviate more. It attains the lowest MAP RMSE ($3.04$~mmHg), flow RMSE ($0.26$~L/min), and settling time ($6.1$~s versus $9$--$22$~s), significantly better than every baseline (Holm-adjusted $p<0.001$) with large effect sizes (Cohen's $d_z$ from $2.1$ to $8.7$).
 
-The ablation (Table~\ref{tab:ablation_results}) then isolates each component: removing either representation module consistently degrades performance, and the MLP PPO baseline is weakest for lacking explicit temporal representation, so the CNN mainly supports local morphological sensitivity while the Transformer contributes temporal adaptation and overall return. The full model significantly outperforms every ablated variant on all four metrics (Holm-adjusted $p<0.05$). Notably, although the reward-ablation baseline is numerically closest on MAP RMSE and flow RMSE, its unsafe-event rate is far higher ($9.54\%$ versus $2.18\%$, $p<0.001$, $d_z>4$), isolating the safety reward terms as the decisive factor for safe operation rather than nominal tracking accuracy.
+The ablation (Table~\ref{tab:ablation_results}) then isolates each component: removing either representation module consistently degrades performance, and the MLP PPO baseline is weakest for lacking explicit temporal representation, so the CNN mainly supports local morphological sensitivity while the Transformer contributes temporal adaptation and overall return. The full model significantly outperforms every ablated variant on all four metrics (Holm-adjusted $p<0.05$). Notably, although the reward-ablation baseline is numerically closest on MAP RMSE and flow RMSE, its unsafe-event rate is far higher ($9.54\%$ versus $2.18\%$, $p<0.001$, $d_z>4$), isolating the safety reward terms as the decisive factor for safe operation rather than tracking accuracy.
 
 \begin{table}[!t]
 \caption{Ablation Study of Representation Modules and Safety-Aware Reward Design}
@@ -173,7 +211,7 @@ Fixed-speed baseline & $8.64 \pm 0.55^{*}$ & $0.849 \pm 0.066^{*}$ & $11.45 \pm 
 \end{table}
 
 \subsection{Comparison with Established VAD Control Strategies}
-As summarized in Table~\ref{tab:extended_baseline_results}, the proposed controller achieves the lowest MAP RMSE, flow RMSE, settling time, and unsafe-event rate among all eight controllers. Among traditional baselines, MPC is strongest, consistent with its explicit predictive model, yet its MAP RMSE ($5.13$~mmHg) and unsafe-event rate ($6.22\%$) stay well above the proposed controller ($3.19$~mmHg and $2.98\%$). Among learning-based baselines, TD3 leads, then the reference DRL VAD controller and DDPG, but all three are limited by their MLP representations and trail the proposed policy on every metric (Holm-adjusted $p<0.001$; Cohen's $d_z$ from $3.8$ to above $13$).
+As summarized in Table~\ref{tab:extended_baseline_results}, the proposed controller achieves the lowest MAP RMSE, flow RMSE, settling time, and unsafe-event rate among all eight controllers. Among traditional baselines, MPC is strongest, consistent with its explicit predictive model, yet its MAP RMSE ($5.13$~mmHg) and unsafe-event rate ($6.22\%$) stay well above the proposed controller ($3.19$~mmHg and $2.98\%$). Among learning-based baselines, TD3 leads, then the reference DRL VAD controller and DDPG, but all three are limited by their MLP representations and trail on every metric (Holm-adjusted $p<0.001$; Cohen's $d_z$ from $3.8$ to above $13$).
 
 \begin{table}[!t]
 \caption{Comparison with Traditional and Learning-Based VAD Controllers}
@@ -235,15 +273,16 @@ Because the physical loop can reproduce only a few operating points, a complemen
 \centering
 \includegraphics[width=\linewidth]{figures/generalization-sweep-preload-afterload-severity.pdf}
 \caption{Simulation generalization sweep. Panels (A) and (B) show mean MAP RMSE and unsafe-event rate of the proposed CNN--Transformer PPO controller over the preload-afterload grid.}
+\Description{Two heatmaps over a preload-afterload grid. Panel A shows mean MAP RMSE and Panel B shows the mean unsafe-event rate of the proposed controller. Both metrics remain low across the central region of the grid and increase gradually toward the physiological extremes of preload and afterload, indicating graceful degradation.}
 \label{fig:generalization_sweep}
 \end{figure}
 
-As shown in Fig.~\ref{fig:generalization_sweep}, the proposed controller keeps low MAP RMSE and unsafe-event rate across the central preload-afterload region and degrades only gradually toward the physiological extremes. Across severity from mild to advanced heart failure, both metrics rise monotonically, yet the proposed controller preserves a consistently large margin over the fixed-speed baseline---for example, MAP RMSE stays near $5$--$7$~mmHg versus $12$--$17$~mmHg and the unsafe-event rate near $4$--$6\%$ versus $15$--$21\%$---confirming graceful degradation even under advanced heart failure.
+As shown in Fig.~\ref{fig:generalization_sweep}, the proposed controller keeps low MAP RMSE and unsafe-event rate across the central preload-afterload region and degrades only gradually toward the physiological extremes. Across severity from mild to advanced heart failure, both metrics rise monotonically, yet the controller preserves a consistently large margin over the fixed-speed baseline---MAP RMSE near $5$--$7$~mmHg versus $12$--$17$~mmHg and unsafe-event rate near $4$--$6\%$ versus $15$--$21\%$---confirming graceful degradation even under advanced heart failure.
 
 \subsection{Applicability and Limitations}
 The controller uses LVP, MAP, pump flow, and previous speed. Pump flow and previous speed are readily available, as continuous-flow controllers estimate flow from motor current and command speed directly. Pressure signals are harder: continuous LVP and arterial pressure are measurable invasively in the acute setting, but chronic indwelling sensing is not routine and risks thrombosis, drift, and infection. The controller is therefore intended to run on estimated pressures in chronic deployment, using sensorless estimation that maps intrinsic pump signals to preload, LVP, and pressure head via model-based observers or learned regressors \cite{b15,b3,b8}; the CNN--Transformer module consumes the same waveforms, so these inputs can in principle be reconstructed from non-invasive telemetry.
 
-Because estimated signals are imperfect, safety also depends on robustness to sensor noise, delay, loss, and drift. The robustness analysis (Section~\ref{sec:results_robustness}) partially addresses this: under injected noise the controller retains a lower unsafe-event rate and faster recovery, as the Transformer attenuates high-frequency noise and short dropouts while the smoothness term prevents abrupt commands. Fixed latency, sustained loss, and slow drift are not modeled and would need a signal-integrity layer for fault detection, fixed-speed fallback, and drift compensation. Other limits---a single mock loop with one continuous-flow pump, a simulated sweep inheriting the model's assumptions, short horizons, and no in vivo data---mean the reported margins reflect relative improvement under controlled conditions rather than a guarantee of clinical performance.
+Because estimated signals are imperfect, safety also depends on robustness to sensor noise, delay, loss, and drift. The robustness analysis (Section~\ref{sec:results_robustness}) partially addresses this: under injected noise the controller retains a lower unsafe-event rate and faster recovery, as the Transformer attenuates high-frequency noise and short dropouts while the smoothness term prevents abrupt commands. Fixed latency, sustained loss, and slow drift are not modeled and would need a signal-integrity layer for fault detection, fixed-speed fallback, and drift compensation. Other limits---a single mock loop with one continuous-flow pump, a simulated sweep inheriting the model's assumptions, short horizons, and no in vivo data---mean the reported margins reflect relative improvement under controlled conditions rather than clinical performance.
 
 \section{Conclusion}
 This paper presented a deep reinforcement learning-based physiological control framework for VADs, integrating a PPO actor-critic scheme, a CNN--Transformer state representation, and a multi-objective reward design. Evaluated on a physical mock circulatory loop and a simulation generalization sweep, it improves perfusion matching, control smoothness, disturbance tolerance, and safety over conventional and weaker learning-based baselines. As validation is limited to in-vitro and in-silico conditions, future work will pursue more diverse conditions and VAD models, longer horizons, and ultimately in vivo and clinical evaluation.
