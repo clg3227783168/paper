@@ -24,3 +24,24 @@ vt3 在加载时 value_tree.cpp 调 build_introspection_metadata_from_run_graph(
 不是"编译阶段变重了还更快"，而是：vt3 把 廉价的一次前向依赖传播 放进编译期（配合合并/分层执行图和 patch 元数据继承），同时 删掉了 vt2 运行期那份昂贵的逐请求反向遍历 ——所以编译阶段几乎没多花时间，整体反而更快。
 
 补充一点澄清：这里的"编译阶段"指的是 VT 模型加载时的 JIT 编译期 ，跟 build.sh 编译 C++ 二进制那个"编译"无关；依赖倒推的挪动不会影响 mono_predict 的 C++ 构建耗时。如果你观察到的其实是 C++ 构建变快，那是另一码事（跟链接的引擎库有关），可以再告诉我，我另行查。
+
+"按需预估"= 模型按需裁剪（on-demand prediction） 。核心逻辑在 gen_model.cpp 的 gen_model_example_index ：先通过 VT 的依赖倒推算出「每个融合分 target 命中哪些 group、依赖哪个模型的哪个 utility」，再据此为每个 model 生成 example_index —— 只对真正会被融合公式用到的 item 发起模型预估 ，不用的就裁掉，省算力。
+
+它的前置就是我们前两轮聊的 prepare_utility_derivation → get_target_consts 倒推。所以"按需预估"和"依赖倒推"是同一条链路的两端：倒推给出依赖，裁剪据此按需预估。
+
+## 我认同"静态 / 动态"的划分——它对应倒推发生的时机
+结合前面 vt3 的机制，这个二分本质上是**「依赖倒推在什么时机确定」**：
+
+静态按需（编译期/加载期就能定）
+
+- 依赖关系在 公式加载时 就固定，与请求内容无关。
+- 对应 vt3 的 build_introspection_metadata_from_run_graph ：baseline 公式在服务启动加载时就把 formula_consts_map_ （哪个 formula 依赖哪些 const/utility）算死了。
+- 代码信号： gen_model.cpp 里 source_model_name == "static" 直接 continue 跳过——静态部分不参与逐请求的动态裁剪。 get_target_consts 的第三参数为 false 时， target_consts_per_group_ 全组共用 [0] （见 L184 的 iter.second.size() > 1 ? [i] : [0] ），即所有 group 依赖一致 → 这就是静态口径。
+动态按需（请求期才能定）
+
+- 依赖关系依赖 请求态的输入 —— group_tag_set 、target rule 命中结果、甚至请求附带的公式——所以必须在请求内确定。
+- 代码信号： enable_vt_IF3_model_dep_cut 打开时， gen_model.cpp 的 get_target_consts(..., true) 会让 每个 gid 的依赖结果都不同 （注释：「如果进行 IF3 裁剪，每个 gid 的 result 不同」）， iter.second[i] 逐 group 取值；再叠加 gen_model.cpp 的 eval_target_rule / target_rule_results_ ——哪个 group 命中哪个 target 是运行时算出来的。这一层是纯动态。
+## 怎么理解这个二分（一句话串起来）
+- 静态按需 = 把"谁依赖谁"在加载期算死，请求期直接查表裁剪 → 成本低、覆盖 baseline 常规公式。这正是 vt3 相对 vt2 的红利：倒推挪到加载期一次算完。
+- 动态按需 = 依赖随请求（tag 集合、rule 命中、请求附带公式）变化，必须请求内实时倒推+裁剪 → 精度更高（能做到逐 group 精确裁剪），但成本落在请求期。请求附带公式天然属于这一类（上一轮结论：它的加载+倒推发生在请求期）。
+两者不是对立，而是 同一套倒推机制在不同时机的落点 ：能提前定的走静态、省钱；定不了的走动态、换精度。vt3 的价值在于把「原本 vt2 每请求都要重算的那部分」尽量下沉成静态，只把真正依赖请求态的留在动态
